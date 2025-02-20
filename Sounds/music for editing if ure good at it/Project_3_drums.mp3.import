@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2o7ilgm4wfa6"
+path="res://.godot/imported/Project_3_drums.mp3-160f8b7f854dbea93bf0f28d685883aa.mp3str"
+
+[deps]
+
+source_file="res://Sounds/music for editing if ure good at it/Project_3_drums.mp3"
+dest_files=["res://.godot/imported/Project_3_drums.mp3-160f8b7f854dbea93bf0f28d685883aa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
