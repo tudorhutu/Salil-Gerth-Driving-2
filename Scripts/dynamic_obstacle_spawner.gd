@@ -2,6 +2,14 @@ extends Node2D
 
 @export var left_spawn_interval: float = 1.0
 @export var right_spawn_interval: float = 2.0
+
+# Minimum intervals when distance is high (i.e. spawn rate is faster)
+@export var min_left_spawn_interval: float = 0.5
+@export var min_right_spawn_interval: float = 1.0
+
+# The distance at which the spawn intervals reach their minimum values.
+@export var distance_for_max_spawn: float = 1000.0
+
 var time_since_spawn_left: float = 0.0
 var time_since_spawn_right: float = 0.0
 
@@ -26,13 +34,23 @@ func _ready() -> void:
 		dir.list_dir_end()
 
 func _process(delta: float) -> void:
+	# Calculate a factor (0.0 to 1.0) based on the current distance
+	# When Global.distance is >= distance_for_max_spawn, factor is 1.
+	var factor: float = clamp(Global.distance / distance_for_max_spawn, 0.0, 1.0)
+	
+	# Lerp between default (slower) intervals and minimum (faster) intervals.
+	var current_left_spawn_interval = lerp(left_spawn_interval, min_left_spawn_interval, factor)
+	var current_right_spawn_interval = lerp(right_spawn_interval, min_right_spawn_interval, factor)
+	
 	if spawnAllowed:
 		time_since_spawn_left += delta
 		time_since_spawn_right += delta
-		if time_since_spawn_left >= left_spawn_interval:
+		
+		if time_since_spawn_left >= current_left_spawn_interval:
 			spawn_obstacle("left")
 			time_since_spawn_left = 0.0
-		if time_since_spawn_right >= right_spawn_interval:
+			
+		if time_since_spawn_right >= current_right_spawn_interval:
 			spawn_obstacle("right")
 			time_since_spawn_right = 0.0
 

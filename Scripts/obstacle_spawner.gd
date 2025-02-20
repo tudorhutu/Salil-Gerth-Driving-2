@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var spawn_interval: float = 2.5
+@export var spawn_interval: float = 1.5
 @export var powerup_spawn_interval: float = 1.0  # Separate interval for powerup spawns
 @export var obstacle_texture: Texture2D = preload("res://Textures/Obstacles/cone.png")
 var obstacle_textures: Array[String] = []
@@ -54,7 +54,9 @@ func _process(delta: float) -> void:
 
 func spawn_obstacle() -> void:
 	# Determine the x coordinate for the obstacle spawn.
-	var x_pos = rng.randi_range(400, 1600)
+	# Using the average of two random numbers biases the spawn location toward the center.
+	var t = (rng.randf() + rng.randf()) / 2.0
+	var x_pos = lerp(400, 1600, t)
 	
 	# Choose a texture from the list, excluding powerup.png.
 	var chosen_texture: Texture2D

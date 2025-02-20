@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 func calculate_drums_volume() -> float:
 	var min_speed = 10.0
 	var max_speed = 70.0
-	var min_volume = -75.0
+	var min_volume = -35.0
 	var max_volume = -5.0 
 	var speed = clamp(Global.player_speed, min_speed, max_speed)
 	return lerp(min_volume, max_volume, (speed - min_speed) / (max_speed - min_speed))
