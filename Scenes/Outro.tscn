@@ -1,0 +1,220 @@
+[gd_scene load_steps=10 format=3 uid="uid://ck3bnl8vy0k4l"]
+
+[ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="1_0vj7d"]
+[ext_resource type="Texture2D" uid="uid://bet678qds0puo" path="res://Textures/2d_lights_and_shadows_neutral_point_light.png" id="2_agwmt"]
+[ext_resource type="Texture2D" uid="uid://b2hvrgb5hm5oo" path="res://Textures/untitled.png" id="3_gf0df"]
+[ext_resource type="Shader" path="res://Textures/Cutscenes/alpha_replace_color.gdshader" id="3_yix7s"]
+[ext_resource type="Texture2D" uid="uid://d3g2jkf48xmgs" path="res://Textures/Cutscenes/salil.png" id="4_pb1wf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7515q"]
+shader = ExtResource("3_yix7s")
+shader_parameter/tolerance = 0.2
+
+[sub_resource type="Animation" id="Animation_ogmu7"]
+resource_name = "outro"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Car:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.06667, 2.43333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1410, 1291), Vector2(1410, 910.2), Vector2(1799, 619)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.966667, 1.16667, 2.23333, 2.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [3.14159, 3.14159, 3.93572, 3.93572, 3.14159]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Salil:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.66667, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Salil:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.13333, 3.36667, 4.06667, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-4.70769, -3.23486, -3.23486, -1.49509]
+}
+
+[sub_resource type="Animation" id="Animation_aocfw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Car:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1410, 1291)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Salil:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Salil:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-4.70769]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3op6"]
+_data = {
+"RESET": SubResource("Animation_aocfw"),
+"outro": SubResource("Animation_ogmu7")
+}
+
+[node name="RoadBackground" type="CanvasLayer"]
+layer = 0
+
+[node name="RoadRoot" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="RoadRoot"]
+color = Color(0.24542, 0.2394, 0.42, 1)
+
+[node name="RoadTexture" type="Sprite2D" parent="RoadRoot"]
+position = Vector2(984.25, 698.373)
+scale = Vector2(2.34464, 2.17424)
+texture = ExtResource("1_0vj7d")
+
+[node name="PointLight2D2" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(534, 1271)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("2_agwmt")
+
+[node name="PointLight2D3" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(534, 714)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("2_agwmt")
+
+[node name="PointLight2D4" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(534, 1800)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("2_agwmt")
+
+[node name="PointLight2D" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(534, 195)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("2_agwmt")
+
+[node name="PointLight2D5" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(1439, 1271)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("2_agwmt")
+
+[node name="PointLight2D6" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(1439, 714)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("2_agwmt")
+
+[node name="PointLight2D7" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(1439, 1800)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("2_agwmt")
+
+[node name="PointLight2D8" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(1439, 195)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("2_agwmt")
+
+[node name="Salil" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7515q")
+position = Vector2(1849, 619)
+rotation = -4.70769
+scale = Vector2(0.0480061, 0.0474032)
+texture = ExtResource("4_pb1wf")
+
+[node name="Car" type="Sprite2D" parent="."]
+position = Vector2(1410, 1291)
+rotation = 3.14159
+scale = Vector2(0.322499, 0.318449)
+texture = ExtResource("3_gf0df")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j3op6")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(992, 544)
