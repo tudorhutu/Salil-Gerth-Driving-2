@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ck3bnl8vy0k4l"]
+[gd_scene load_steps=22 format=3 uid="uid://ck3bnl8vy0k4l"]
 
 [ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="1_0vj7d"]
 [ext_resource type="Script" path="res://Scripts/outro.gd" id="1_qe5tl"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://lw8wurgxarp8" path="res://Textures/Cutscenes/blood_splatter.png" id="5_6hgul"]
 [ext_resource type="Texture2D" uid="uid://uoi7kp76yq6o" path="res://Textures/Cutscenes/bloodpool.png" id="6_41lly"]
 [ext_resource type="Texture2D" uid="uid://dmg8hfndsvf2t" path="res://Textures/Cutscenes/wife_corpse_placeholder.png" id="6_s6u2a"]
+[ext_resource type="AudioStream" uid="uid://bwexmu5kbmbq" path="res://Sounds/wifedeadtheme.mp3" id="12_73tg7"]
 
 [sub_resource type="Gradient" id="Gradient_qexc1"]
 colors = PackedColorArray(0.78, 0.54626, 0.3276, 1, 0, 0, 0, 1)
@@ -721,7 +722,6 @@ scale = Vector2(2.63965, 3.1039)
 color = Color(0, 0, 0, 1)
 
 [node name="Blackout2" type="ColorRect" parent="."]
-visible = false
 offset_left = 3124.0
 offset_top = 333.0
 offset_right = 3244.0
@@ -735,3 +735,11 @@ visibility_layer = 7
 z_index = 2
 position = Vector2(1482, 612)
 zoom = Vector2(1.47, 1.47)
+
+[node name="wife_dead_player" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(2656, 605)
+stream = ExtResource("12_73tg7")
+volume_db = 2.811
+max_distance = 36075.0
+attenuation = 24.2516
+panning_strength = 0.84

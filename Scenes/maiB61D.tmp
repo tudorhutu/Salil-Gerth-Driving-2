@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cn4fsgay8bat0"]
+[gd_scene load_steps=14 format=3 uid="uid://cn4fsgay8bat0"]
 
 [ext_resource type="PackedScene" uid="uid://c6848nhfw7043" path="res://Scenes/Road_Entities.tscn" id="1_8tk2h"]
 [ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_lba7u"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://Scripts/distance.gd" id="8_hta84"]
 [ext_resource type="Texture2D" uid="uid://cqrts0dnqc5h" path="res://Textures/progressbar.png" id="8_vc4eb"]
 [ext_resource type="Script" path="res://Scripts/timer_node.gd" id="11_ee2rj"]
-[ext_resource type="FontFile" uid="uid://bhuhi4yo5rvro" path="res://Fonts/yoster.ttf" id="12_facu8"]
 
 [sub_resource type="Shader" id="Shader_w38rg"]
 code = "shader_type canvas_item;
@@ -106,7 +105,14 @@ offset_right = 382.0
 offset_bottom = 989.0
 texture = ExtResource("5_whl3i")
 
-[node name="TimerNode" type="Control" parent="CanvasLayer"]
+[node name="Distance" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_hta84")
+
+[node name="TimerNode" type="Control" parent="."]
 light_mask = 1023
 visibility_layer = 1023
 layout_mode = 3
@@ -117,24 +123,10 @@ offset_right = 1550.0
 offset_bottom = 190.0
 script = ExtResource("11_ee2rj")
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer/TimerNode"]
+[node name="TimerLabel" type="Label" parent="TimerNode"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-theme_override_colors/font_color = Color(0.986752, 0.986752, 0.986752, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/font = ExtResource("12_facu8")
-theme_override_font_sizes/font_size = 54
 
-[node name="Timer" type="Timer" parent="CanvasLayer/TimerNode"]
+[node name="Timer" type="Timer" parent="TimerNode"]
 wait_time = 120.0
-
-[node name="Distance" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("8_hta84")

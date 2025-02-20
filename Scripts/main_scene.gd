@@ -13,8 +13,8 @@ func _ready() -> void:
 	harmony_player = AudioStreamPlayer.new()
 	
 
-	drums_player.stream = preload("res://Sounds/Project_3_drums.mp3")
-	harmony_player.stream = preload("res://Sounds/Project_3_harmony.mp3")
+	drums_player.stream = preload("res://Sounds/drumss.wav")
+	harmony_player.stream = preload("res://Sounds/drumss.wav")
 	
 
 	drums_player.volume_db = calculate_drums_volume()
