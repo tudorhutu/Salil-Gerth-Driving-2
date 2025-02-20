@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://1i0u6rmhhgkd"]
+
+[ext_resource type="Texture2D" uid="uid://bx6o8swk4lyi0" path="res://Textures/istockphoto-1365709788-612x612.png" id="1_m6oal"]
+
+[node name="PointLight2D" type="PointLight2D"]
+position = Vector2(-1, -327)
+rotation = 4.71238
+scale = Vector2(1.06286, 0.910318)
+color = Color(0.647541, 0.436712, 0.144562, 0.776471)
+energy = 7.33
+range_layer_min = -512
+texture = ExtResource("1_m6oal")

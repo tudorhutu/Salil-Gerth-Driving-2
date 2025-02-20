@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsg7d6kge32js"]
+
+[ext_resource type="Script" path="res://Scripts/car.gd" id="1_ifyty"]
+[ext_resource type="Texture2D" uid="uid://dd00vmdgy3e28" path="res://Textures/png-clipart-car-pixel-art-pixel-rectangle-symmetry-thumbnail.png" id="1_yjnbw"]
+
+[node name="Car" type="Node2D"]
+script = ExtResource("1_ifyty")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.155154, 0.155154)
+texture = ExtResource("1_yjnbw")

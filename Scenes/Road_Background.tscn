@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgj0lbsa3ichv"]
+
+[ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="1_2ki2j"]
+[ext_resource type="Script" path="res://Scripts/parallax_background.gd" id="1_bk84m"]
+[ext_resource type="Texture2D" uid="uid://bet678qds0puo" path="res://Textures/2d_lights_and_shadows_neutral_point_light.png" id="3_rhc28"]
+
+[node name="RoadBackground" type="CanvasLayer"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_bk84m")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+light_mask = 1023
+visibility_layer = 1023
+z_index = -1
+motion_mirroring = Vector2(0, 1080)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer"]
+color = Color(0.24542, 0.2394, 0.42, 1)
+
+[node name="RoadTexture" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(984.25, 698.373)
+scale = Vector2(2.34464, 2.17424)
+texture = ExtResource("1_2ki2j")
+
+[node name="PointLight2D2" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(534, 1271)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_rhc28")
+
+[node name="PointLight2D3" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(534, 714)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_rhc28")
+
+[node name="PointLight2D4" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(534, 1800)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_rhc28")
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(534, 195)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_rhc28")
+
+[node name="PointLight2D5" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1439, 1271)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_rhc28")
+
+[node name="PointLight2D6" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1439, 714)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_rhc28")
+
+[node name="PointLight2D7" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1439, 1800)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_rhc28")
+
+[node name="PointLight2D8" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1439, 195)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_rhc28")

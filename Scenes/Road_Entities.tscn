@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6848nhfw7043"]
+
+[ext_resource type="Script" path="res://Scripts/collision_handling.gd" id="1_0rhws"]
+[ext_resource type="PackedScene" uid="uid://dsg7d6kge32js" path="res://Scenes/Car.tscn" id="1_31win"]
+[ext_resource type="PackedScene" uid="uid://bdbgjy6t0kxhc" path="res://Scenes/Static_Obstacle.tscn" id="3_amjl8"]
+[ext_resource type="PackedScene" uid="uid://csanr4b7i0lnf" path="res://Scenes/DynamicObstacle.tscn" id="5_6vv3y"]
+[ext_resource type="PackedScene" uid="uid://d1abw7lf8iae7" path="res://Scenes/Dirt.tscn" id="5_nqrnx"]
+
+[node name="Road_Entities" type="Node2D"]
+script = ExtResource("1_0rhws")
+
+[node name="StaticObstacle" parent="." instance=ExtResource("3_amjl8")]
+
+[node name="Car" parent="." groups=["car"] instance=ExtResource("1_31win")]
+collision_mask = 6
+
+[node name="Dirt" parent="." instance=ExtResource("5_nqrnx")]
+collision_layer = 4
+
+[node name="DynamicObstacle" parent="." instance=ExtResource("5_6vv3y")]
+
+[connection signal="area_entered" from="Dirt" to="Car" method="_on_dirt_area_entered"]
+[connection signal="area_exited" from="Dirt" to="Car" method="_on_dirt_area_exited"]

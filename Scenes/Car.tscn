@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsg7d6kge32js"]
+
+[ext_resource type="Script" path="res://Scripts/car.gd" id="1_ifyty"]
+[ext_resource type="Texture2D" uid="uid://b2hvrgb5hm5oo" path="res://Textures/untitled.png" id="2_2ynm8"]
+[ext_resource type="Texture2D" uid="uid://bx6o8swk4lyi0" path="res://Textures/istockphoto-1365709788-612x612.png" id="3_e4ynh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25ck2"]
+size = Vector2(50, 97)
+
+[node name="Car" type="Area2D"]
+collision_layer = 32769
+collision_mask = 32770
+script = ExtResource("1_ifyty")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 9)
+rotation = -3.14159
+scale = Vector2(0.322499, 0.318449)
+texture = ExtResource("2_2ynm8")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-6.20429, -1086.52)
+rotation = -1.5708
+scale = Vector2(3.33761, 2.56067)
+color = Color(0.647541, 0.436712, 0.144562, 0.776471)
+energy = 1.68
+range_layer_min = -512
+texture = ExtResource("3_e4ynh")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(0.00267267, 1067.67)
+rotation = 1.57079
+scale = Vector2(3.33761, 2.8227)
+color = Color(0.860306, 0.383875, 0.167352, 0.776471)
+energy = 7.33
+range_layer_min = -512
+texture = ExtResource("3_e4ynh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 9)
+shape = SubResource("RectangleShape2D_25ck2")

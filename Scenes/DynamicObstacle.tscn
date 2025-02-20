@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://csanr4b7i0lnf"]
+
+[ext_resource type="Script" path="res://Scripts/dynamic_obstacle_spawner.gd" id="1_3nou8"]
+[ext_resource type="Texture2D" uid="uid://dd00vmdgy3e28" path="res://Textures/png-clipart-car-pixel-art-pixel-rectangle-symmetry-thumbnail.png" id="1_8qe7r"]
+[ext_resource type="Script" path="res://Scripts/DynamicObstacle.gd" id="2_g1ag6"]
+[ext_resource type="Texture2D" uid="uid://bx6o8swk4lyi0" path="res://Textures/istockphoto-1365709788-612x612.png" id="4_qn7rp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5art8"]
+size = Vector2(62, 110)
+
+[node name="DynamicObstacle" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_3nou8")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-0.999997, -336.5)
+rotation = -1.5708
+scale = Vector2(1.06286, 0.910318)
+color = Color(0.647541, 0.436712, 0.144562, 0.776471)
+energy = 7.33
+range_layer_min = -512
+texture = ExtResource("4_qn7rp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.174508, 0.174508)
+texture = ExtResource("1_8qe7r")
+script = ExtResource("2_g1ag6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5art8")
