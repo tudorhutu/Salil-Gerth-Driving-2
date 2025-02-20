@@ -154,7 +154,7 @@ tracks/9/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight1:enabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(37.7667, 38.3, 64.3935, 65.0333),
+"times": PackedFloat32Array(37.2333, 37.7667, 56.9602, 57.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, true, false]
@@ -166,7 +166,7 @@ tracks/10/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight2:enabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(41.2667, 41.8, 55.4, 56.0398),
+"times": PackedFloat32Array(40.0398, 40.5731, 51, 51.6398),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, true, false]
@@ -178,7 +178,7 @@ tracks/11/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight3:enabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(47.7667, 48.3, 59.5269, 60.1667),
+"times": PackedFloat32Array(43.3667, 43.9, 53.7602, 54.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, true, true, false]
@@ -190,7 +190,7 @@ tracks/12/path = NodePath("HouseRoot/House/CanvasLayer3/entrancelight:enabled")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0.1, 52.5333, 53.1667),
+"times": PackedFloat32Array(0.1, 48.1333, 48.7667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
@@ -202,7 +202,7 @@ tracks/13/path = NodePath("Blackout1:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 52.4333, 53.1667),
+"times": PackedFloat32Array(0, 48.0333, 48.7667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
@@ -214,7 +214,7 @@ tracks/14/path = NodePath("Blackout2:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 52.4333, 53.1667),
+"times": PackedFloat32Array(0, 48.0333, 48.7667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
@@ -226,7 +226,7 @@ tracks/15/path = NodePath("HintsLayer/Disclaimer:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0.0666667, 68.0333, 68.8333),
+"times": PackedFloat32Array(0.0666667, 59.6667, 60.4667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
@@ -646,7 +646,6 @@ metadata/_edit_lock_ = true
 [node name="interiorlight2" type="PointLight2D" parent="HouseRoot/House/CanvasLayer3"]
 position = Vector2(2970, 613)
 scale = Vector2(3.37499, 3.44965)
-enabled = false
 energy = 1.43
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
@@ -655,7 +654,6 @@ metadata/_edit_lock_ = true
 [node name="interiorlight3" type="PointLight2D" parent="HouseRoot/House/CanvasLayer3"]
 position = Vector2(3084, 613)
 scale = Vector2(3.37499, 3.44965)
-enabled = false
 energy = 1.43
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
@@ -713,7 +711,6 @@ text = "Don't drink and drive"
 libraries = {
 "": SubResource("AnimationLibrary_j3op6")
 }
-speed_scale = 2.0
 
 [node name="Blackout1" type="ColorRect" parent="."]
 offset_left = 2502.0
@@ -724,6 +721,7 @@ scale = Vector2(2.63965, 3.1039)
 color = Color(0, 0, 0, 1)
 
 [node name="Blackout2" type="ColorRect" parent="."]
+visible = false
 offset_left = 3124.0
 offset_top = 333.0
 offset_right = 3244.0
