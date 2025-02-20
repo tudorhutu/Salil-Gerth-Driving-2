@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://ck3bnl8vy0k4l"]
+[gd_scene load_steps=13 format=3 uid="uid://ck3bnl8vy0k4l"]
 
 [ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="1_0vj7d"]
+[ext_resource type="Script" path="res://Scripts/outro.gd" id="1_qe5tl"]
 [ext_resource type="Texture2D" uid="uid://bet678qds0puo" path="res://Textures/2d_lights_and_shadows_neutral_point_light.png" id="2_agwmt"]
 [ext_resource type="Texture2D" uid="uid://b2hvrgb5hm5oo" path="res://Textures/untitled.png" id="3_gf0df"]
 [ext_resource type="Shader" path="res://Textures/Cutscenes/alpha_replace_color.gdshader" id="3_yix7s"]
+[ext_resource type="Texture2D" uid="uid://bpt7ddplcpl1m" path="res://Textures/Cutscenes/grass.png" id="4_gub6n"]
 [ext_resource type="Texture2D" uid="uid://d3g2jkf48xmgs" path="res://Textures/Cutscenes/salil.png" id="4_pb1wf"]
+[ext_resource type="Texture2D" uid="uid://nthpdkgnhvke" path="res://Textures/Cutscenes/blood_splatter.png" id="5_6hgul"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7515q"]
 shader = ExtResource("3_yix7s")
@@ -44,7 +47,7 @@ tracks/2/path = NodePath("Salil:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.66667, 2.8),
+"times": PackedFloat32Array(0, 3, 3.13333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
@@ -56,10 +59,46 @@ tracks/3/path = NodePath("Salil:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.13333, 3.36667, 4.06667, 4.3),
+"times": PackedFloat32Array(3.7, 3.93333, 4.96667, 5.2, 6.36667, 6.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-4.70769, -3.23486, -3.23486, -1.49509, -1.49509, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Salil:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(7.43333, 10.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1854, 618), Vector2(2263, 609)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7.43333, 10.3, 11.1, 12.5667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-4.70769, -3.23486, -3.23486, -1.49509]
+"values": [Vector2(1482, 612), Vector2(1713, 625), Vector2(1713, 625), Vector2(2378, 625)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer2/QuestionMarkReaction:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10.6333, 10.7667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_aocfw"]
@@ -112,6 +151,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [-4.70769]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Salil:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1854, 618)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1482, 612)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer2/QuestionMarkReaction:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3op6"]
 _data = {
@@ -119,19 +194,33 @@ _data = {
 "outro": SubResource("Animation_ogmu7")
 }
 
-[node name="RoadBackground" type="CanvasLayer"]
-layer = 0
+[node name="Outro" type="Node2D"]
+script = ExtResource("1_qe5tl")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.24542, 0.2394, 0.42, 1)
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="QuestionMarkReaction" type="Label" parent="CanvasLayer2"]
+z_index = 4
+offset_left = 2261.0
+offset_top = 574.0
+offset_right = 2301.0
+offset_bottom = 602.0
+theme_override_colors/font_color = Color(1, 0.816667, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "?"
 
 [node name="RoadRoot" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
-
-[node name="CanvasModulate" type="CanvasModulate" parent="RoadRoot"]
-color = Color(0.24542, 0.2394, 0.42, 1)
 
 [node name="RoadTexture" type="Sprite2D" parent="RoadRoot"]
 position = Vector2(984.25, 698.373)
 scale = Vector2(2.34464, 2.17424)
 texture = ExtResource("1_0vj7d")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(534, 1271)
@@ -140,6 +229,7 @@ color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 texture = ExtResource("2_agwmt")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D3" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(534, 714)
@@ -148,6 +238,7 @@ color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 texture = ExtResource("2_agwmt")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D4" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(534, 1800)
@@ -156,6 +247,7 @@ color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 texture = ExtResource("2_agwmt")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(534, 195)
@@ -164,6 +256,7 @@ color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 texture = ExtResource("2_agwmt")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D5" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(1439, 1271)
@@ -172,6 +265,7 @@ color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 texture = ExtResource("2_agwmt")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D6" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(1439, 714)
@@ -180,6 +274,7 @@ color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 texture = ExtResource("2_agwmt")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D7" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(1439, 1800)
@@ -188,6 +283,7 @@ color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 texture = ExtResource("2_agwmt")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D8" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(1439, 195)
@@ -196,10 +292,65 @@ color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 texture = ExtResource("2_agwmt")
+metadata/_edit_lock_ = true
+
+[node name="HouseRoot" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Grass" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2104, 321)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="Grass2" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2104, 704)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="Grass3" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2104, 1088)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="Grass4" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2488, 321)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="Grass5" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2488, 704)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="Grass6" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2488, 1088)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="Grass7" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2872, 321)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="Grass8" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2872, 704)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="Grass9" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2872, 1088)
+texture = ExtResource("4_gub6n")
+metadata/_edit_lock_ = true
+
+[node name="blood" type="Sprite2D" parent="HouseRoot"]
+position = Vector2(2469, 620)
+rotation = 3.14159
+scale = Vector2(0.269143, 0.321858)
+texture = ExtResource("5_6hgul")
 
 [node name="Salil" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_7515q")
-position = Vector2(1849, 619)
+position = Vector2(1854, 618)
 rotation = -4.70769
 scale = Vector2(0.0480061, 0.0474032)
 texture = ExtResource("4_pb1wf")
@@ -217,4 +368,5 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(992, 544)
+position = Vector2(1482, 612)
+zoom = Vector2(1.47, 1.47)
