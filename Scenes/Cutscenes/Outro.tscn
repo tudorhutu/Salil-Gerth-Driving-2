@@ -457,7 +457,7 @@ tracks/17/path = NodePath("TopMostLayer/Disclaimer:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0.0666667, 55.6, 56.4),
+"times": PackedFloat32Array(0.0666667, 55.9, 56.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
@@ -849,6 +849,7 @@ metadata/_edit_lock_ = true
 [node name="interiorlight2" type="PointLight2D" parent="HouseRoot/House/CanvasLayer3"]
 position = Vector2(2970, 613)
 scale = Vector2(3.37499, 3.44965)
+enabled = false
 energy = 2.65
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
@@ -857,6 +858,7 @@ metadata/_edit_lock_ = true
 [node name="interiorlight3" type="PointLight2D" parent="HouseRoot/House/CanvasLayer3"]
 position = Vector2(3084, 613)
 scale = Vector2(3.37499, 3.44965)
+enabled = false
 energy = 2.59
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
