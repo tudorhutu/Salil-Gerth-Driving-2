@@ -1,0 +1,561 @@
+[gd_scene load_steps=21 format=3 uid="uid://dwtfwm8yjpuh6"]
+
+[ext_resource type="Script" path="res://Scripts/outro.gd" id="1_pmctp"]
+[ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="2_wiy02"]
+[ext_resource type="Texture2D" uid="uid://bet678qds0puo" path="res://Textures/2d_lights_and_shadows_neutral_point_light.png" id="3_1xkhv"]
+[ext_resource type="Texture2D" uid="uid://bpt7ddplcpl1m" path="res://Textures/Cutscenes/grass.png" id="4_t81wa"]
+[ext_resource type="Shader" path="res://Shaders/color_replace_keep_alpha.gdshader" id="6_qjfeb"]
+[ext_resource type="Texture2D" uid="uid://daycmitiy0q8y" path="res://Textures/Cutscenes/footprint.png" id="7_1cvth"]
+[ext_resource type="Shader" path="res://Shaders/alpha_replace_color.gdshader" id="12_gdwuy"]
+[ext_resource type="Texture2D" uid="uid://d3g2jkf48xmgs" path="res://Textures/Cutscenes/salil.png" id="16_8aes7"]
+[ext_resource type="Texture2D" uid="uid://b2hvrgb5hm5oo" path="res://Textures/untitled.png" id="17_6b76d"]
+[ext_resource type="Texture2D" uid="uid://bx6o8swk4lyi0" path="res://Textures/istockphoto-1365709788-612x612.png" id="18_sn7ik"]
+
+[sub_resource type="Gradient" id="Gradient_qexc1"]
+colors = PackedColorArray(0.78, 0.54626, 0.3276, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8cymi"]
+gradient = SubResource("Gradient_qexc1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.646, 0.107)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b80do"]
+shader = ExtResource("6_qjfeb")
+shader_parameter/target_color = Vector4(0, 0, 0, 0)
+shader_parameter/replacement_color = Vector4(0.56, 0, 0, 1)
+shader_parameter/threshold = 1.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cyaf4"]
+polygon = PackedVector2Array(9.20862, -91.0222, 9.20862, 32.2371, -72.7482, 32.2371, -110.504, -29.3926, -65.3813, -97.6592)
+
+[sub_resource type="Gradient" id="Gradient_5e85g"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.232086, 0.552144, 0.636182, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kka4c"]
+gradient = SubResource("Gradient_5e85g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7515q"]
+shader = ExtResource("12_gdwuy")
+shader_parameter/tolerance = 0.2
+
+[sub_resource type="Animation" id="Animation_aocfw"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HouseRoot/House/CanvasLayer/Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HouseRoot/House/CanvasLayer/Salil2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-722, 603)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HouseRoot/House/CanvasLayer/Salil:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-802, 597)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HouseRoot/House/CanvasLayer/Salil:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.27369]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HouseRoot/House/CanvasLayer/Salil2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.29707]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopMostLayer/Dialogue1:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_va8ci"]
+resource_name = "outro"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HouseRoot/House/CanvasLayer/Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.03333, 2.63333, 3.56667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.5708, -1.5708, -3.14159]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HouseRoot/House/CanvasLayer/Salil2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.933333, 4.33333, 6.76667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-722, 603), Vector2(-722, 603), Vector2(-593, 581)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HouseRoot/House/CanvasLayer/Salil2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(9.8, 10.1333, 21.7333, 23.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-6.29707, -4.98429, -4.98429, -6.57688]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HouseRoot/House/CanvasLayer/Salil:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.13333, 5.73333, 8.33333, 21.6, 25.6667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-802, 597), Vector2(-802, 597), Vector2(-587, 641), Vector2(-587, 641), Vector2(-153, 466)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HouseRoot/House/CanvasLayer/Salil:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.16667, 8.93333, 9.26667, 14.0667, 14.4667, 20.9333, 21.2333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-6.27369, -6.27369, -6.54769, -6.54769, -7.86871, -7.86871, -6.74151]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopMostLayer/Dialogue1:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.333333, 10.4667, 10.9667, 12.9, 13.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TopMostLayer/Dialogue2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.266665, 15.5, 16, 19.3333, 19.8333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3op6"]
+_data = {
+"RESET": SubResource("Animation_aocfw"),
+"outro": SubResource("Animation_va8ci")
+}
+
+[node name="Outro" type="Node2D"]
+script = ExtResource("1_pmctp")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.24542, 0.2394, 0.42, 1)
+metadata/_edit_lock_ = true
+
+[node name="RoadRoot" type="Node2D" parent="."]
+position = Vector2(0, -74)
+metadata/_edit_lock_ = true
+
+[node name="RoadTexture" type="Sprite2D" parent="RoadRoot"]
+position = Vector2(984.25, 698.373)
+scale = Vector2(2.34464, 2.17424)
+texture = ExtResource("2_wiy02")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(534, 1271)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D3" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(534, 714)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(534, 195)
+scale = Vector2(4, 1.5)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D5" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(1578, 1095)
+scale = Vector2(3.32031, 2.08203)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D6" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(1619.5, 693)
+scale = Vector2(3.16797, 2.24219)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+range_layer_max = 1
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D8" type="PointLight2D" parent="RoadRoot"]
+position = Vector2(1614.5, 288.5)
+scale = Vector2(3.20703, 2.23828)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 11.15
+range_layer_min = -512
+range_layer_max = 1
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="HouseRoot" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Yard" type="Node2D" parent="HouseRoot"]
+position = Vector2(-3050, 0)
+
+[node name="Grass" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2104, 321)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass2" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2104, 704)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass3" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2104, 1088)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass4" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2488, 321)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass5" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2488, 704)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass6" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2488, 1088)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass7" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2872, 321)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass8" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2872, 704)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass9" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2872, 1088)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="ColorRect" parent="HouseRoot/Yard"]
+offset_left = 2218.0
+offset_top = 568.0
+offset_right = 2536.0
+offset_bottom = 595.0
+scale = Vector2(2.63965, 3.1039)
+color = Color(0.662626, 0.676524, 0.33986, 1)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="ColorRect" parent="HouseRoot/Yard"]
+offset_left = 2220.0
+offset_top = 298.0
+offset_right = 2538.0
+offset_bottom = 349.0
+scale = Vector2(2.63965, 3.1039)
+color = Color(0.662626, 0.676524, 0.33986, 1)
+
+[node name="PointLight2D2" type="PointLight2D" parent="HouseRoot/Yard"]
+position = Vector2(2810, 262)
+scale = Vector2(6.15625, 6.29243)
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_8cymi")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="HouseRoot/Yard"]
+position = Vector2(2485, 260)
+scale = Vector2(7.00001, 7.07701)
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_8cymi")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D3" type="PointLight2D" parent="HouseRoot/Yard"]
+position = Vector2(2598, 704)
+scale = Vector2(7.875, 8.0492)
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_8cymi")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D4" type="PointLight2D" parent="HouseRoot/Yard"]
+position = Vector2(2623, 485)
+scale = Vector2(6.48437, 6.5557)
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_8cymi")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D5" type="PointLight2D" parent="HouseRoot/Yard"]
+position = Vector2(2909, 722)
+scale = Vector2(5.71875, 5.84525)
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_8cymi")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D6" type="PointLight2D" parent="HouseRoot/Yard"]
+position = Vector2(2935, 498)
+scale = Vector2(5.73437, 5.79745)
+range_layer_max = 1
+texture = SubResource("GradientTexture2D_8cymi")
+metadata/_edit_lock_ = true
+
+[node name="footprint" type="Sprite2D" parent="HouseRoot/Yard"]
+material = SubResource("ShaderMaterial_b80do")
+position = Vector2(2371, 629)
+rotation = -2.3259
+scale = Vector2(0.0166594, 0.0166594)
+texture = ExtResource("7_1cvth")
+
+[node name="footprint2" type="Sprite2D" parent="HouseRoot/Yard"]
+material = SubResource("ShaderMaterial_b80do")
+position = Vector2(2349, 656)
+rotation = -4.83455
+scale = Vector2(0.017, -0.017)
+texture = ExtResource("7_1cvth")
+
+[node name="House" type="Node2D" parent="HouseRoot"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HouseRoot/House"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="HouseRoot/House/CanvasLayer"]
+color = Color(0, 0, 0, 1)
+
+[node name="Door" type="ColorRect" parent="HouseRoot/House/CanvasLayer"]
+z_index = 1
+offset_left = -656.0
+offset_top = 652.0
+offset_right = -572.0
+offset_bottom = 664.0
+rotation = -1.5708
+color = Color(0.690147, 0.394225, 0.125503, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="HouseRoot/House/CanvasLayer/Door"]
+position = Vector2(34, -11)
+rotation = 1.5708
+scale = Vector2(1.08594, 1.05469)
+occluder = SubResource("OccluderPolygon2D_cyaf4")
+
+[node name="Floor" type="TextureRect" parent="HouseRoot/House/CanvasLayer"]
+offset_left = -1299.0
+offset_top = 234.0
+offset_right = -651.0
+offset_bottom = 885.0
+texture = SubResource("GradientTexture2D_kka4c")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="HouseRoot/House/CanvasLayer"]
+offset_left = -670.0
+offset_top = 568.0
+offset_right = -546.0
+offset_bottom = 587.0
+rotation = -1.5708
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="HouseRoot/House/CanvasLayer"]
+offset_left = -1297.0
+offset_top = 309.0
+offset_right = -1222.0
+offset_bottom = 953.0
+rotation = -1.5708
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="HouseRoot/House/CanvasLayer"]
+offset_left = -1296.0
+offset_top = 882.0
+offset_right = -1066.0
+offset_bottom = 1528.0
+rotation = -1.5708
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D9" type="PointLight2D" parent="HouseRoot/House/CanvasLayer"]
+position = Vector2(-620, 603)
+scale = Vector2(1.08594, 1.05469)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 4.88
+range_layer_min = -512
+range_layer_max = 1
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="Salil2" type="Sprite2D" parent="HouseRoot/House/CanvasLayer"]
+material = SubResource("ShaderMaterial_7515q")
+position = Vector2(-722, 603)
+rotation = -6.29707
+scale = Vector2(0.0480061, 0.0474032)
+texture = ExtResource("16_8aes7")
+
+[node name="Salil" type="Sprite2D" parent="HouseRoot/House/CanvasLayer"]
+material = SubResource("ShaderMaterial_7515q")
+position = Vector2(-802, 597)
+rotation = -6.27369
+scale = Vector2(0.0480061, 0.0474032)
+texture = ExtResource("16_8aes7")
+
+[node name="Car" type="Sprite2D" parent="."]
+position = Vector2(-162, 406)
+rotation = 4.28792
+scale = Vector2(0.322499, 0.318449)
+texture = ExtResource("17_6b76d")
+
+[node name="headlight" type="PointLight2D" parent="Car"]
+position = Vector2(-6.20429, -1086.52)
+rotation = -1.5708
+scale = Vector2(3.33761, 2.56067)
+enabled = false
+color = Color(0.647541, 0.436712, 0.144562, 0.776471)
+energy = 1.68
+range_layer_min = -512
+texture = ExtResource("18_sn7ik")
+metadata/_edit_lock_ = true
+
+[node name="backlight" type="PointLight2D" parent="Car"]
+position = Vector2(0.00267267, 1067.67)
+rotation = 1.57079
+scale = Vector2(3.33761, 2.8227)
+enabled = false
+color = Color(0.96972, 0.214285, 0.214381, 0.776471)
+energy = 7.33
+range_layer_min = -512
+texture = ExtResource("18_sn7ik")
+metadata/_edit_lock_ = true
+
+[node name="TopMostLayer" type="CanvasLayer" parent="."]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="Dialogue1" type="Node2D" parent="TopMostLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="TopMostLayer/Dialogue1"]
+offset_left = -871.0
+offset_top = 398.0
+offset_right = -601.0
+offset_bottom = 594.0
+scale = Vector2(2.92941, 2.86615)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="TopMostLayer/Dialogue1"]
+offset_left = -579.0
+offset_top = 674.0
+offset_right = -378.0
+offset_bottom = 697.0
+text = "You shouldn't drive drunk"
+
+[node name="Dialogue2" type="Node2D" parent="TopMostLayer"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="TopMostLayer/Dialogue2"]
+offset_left = -871.0
+offset_top = 398.0
+offset_right = -601.0
+offset_bottom = 594.0
+scale = Vector2(2.92941, 2.86615)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="TopMostLayer/Dialogue2"]
+offset_left = -579.0
+offset_top = 674.0
+offset_right = -378.0
+offset_bottom = 697.0
+text = "Eh, what could go wrong?"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j3op6")
+}

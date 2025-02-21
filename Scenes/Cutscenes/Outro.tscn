@@ -763,7 +763,6 @@ offset_right = 2937.0
 offset_bottom = 534.0
 scale = Vector2(2.63965, 3.1039)
 color = Color(0.583058, 0.42484, 0.399891, 1)
-metadata/_edit_lock_ = true
 
 [node name="Wall" type="ColorRect" parent="HouseRoot/House/CanvasLayer3"]
 offset_left = 2817.0
@@ -849,7 +848,6 @@ metadata/_edit_lock_ = true
 [node name="interiorlight2" type="PointLight2D" parent="HouseRoot/House/CanvasLayer3"]
 position = Vector2(2970, 613)
 scale = Vector2(3.37499, 3.44965)
-enabled = false
 energy = 2.65
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
@@ -958,6 +956,7 @@ scale = Vector2(2.63965, 3.1039)
 color = Color(0, 0, 0, 1)
 
 [node name="Blackout2" type="ColorRect" parent="TopMostLayer"]
+visible = false
 offset_left = 3124.0
 offset_top = 333.0
 offset_right = 3244.0
