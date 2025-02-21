@@ -44,6 +44,8 @@ void fragment() {
 	material = under_mat
 
 func _process(delta: float) -> void:
+	if Global.paused:
+		return
 	value += (base_fill_rate + Global.player_speed * speed_multiplier) * delta * 100
 	if value > max_value:
 		value = max_value
@@ -67,7 +69,9 @@ func on_powerup_hit(area: Area2D) -> void:
 		value = 0
 		
 func trigger_borasc() -> void:
+	Global.borasc = true
 	SignalBus.emit_signal("BORASC")
 	await get_tree().create_timer(2.0).timeout
 	value = 0
+	Global.borasc = false
 	is_triggered = false

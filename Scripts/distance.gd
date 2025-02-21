@@ -18,11 +18,12 @@ func _draw() -> void:
 	draw_line(start_point, filled_end_point, Color.GREEN, bar_height)
 
 func _process(delta: float) -> void:
+	if Global.paused or Global.borasc:
+		return
 	current_progress = (Global.distance - min_value) / (max_value - min_value)
 	current_progress = clamp(current_progress, 0.0, 1.0)
-	
 	# Check if the progress is full (i.e., 100%)
 	if current_progress >= 1.0:
-		get_tree().change_scene_to_file("res://Scenes/Outro.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Cutscenes/Outro.tscn")
 	
 	queue_redraw()

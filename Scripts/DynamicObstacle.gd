@@ -12,6 +12,8 @@ func _on_area_entered_obstacle(other_area: Area2D) -> void:
 	queue_free()
 
 func _process(delta: float) -> void:
+	if Global.paused:
+		return
 	var effective_speed = speed 
 	if movement_direction == Vector2.DOWN:
 		effective_speed = speed + 60 + Global.player_speed * 75

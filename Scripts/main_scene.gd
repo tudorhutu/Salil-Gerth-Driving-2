@@ -3,10 +3,11 @@ extends Node2D
 var paused: bool = false
 
 func _ready() -> void:
+	$gover.hide()
+	$gover2.hide()
 	$Drums.play()
 	$Slow.play()
 	$Normal.play()
-	process_mode = PROCESS_MODE_ALWAYS
 	get_tree().paused = false
 	$Slow.volume_db-=100
 	$Drums.volume_db = -15
@@ -20,10 +21,10 @@ func _process(delta: float) -> void:
 	else:
 		$Slow.volume_db = -100
 		$Normal.volume_db = 0
+	if Input.is_action_pressed("ui_cancel"):
+		if Global.paused:
+			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		toggle_pause()
 
 func toggle_pause() -> void:
 	paused = !paused
@@ -39,3 +40,14 @@ func _on_slow_finished() -> void:
 
 func _on_normal_finished() -> void:
 	$Normal.play()
+
+
+func _on_timer_timeout() -> void:
+	$overr.play()
+	$gover.show()
+	$gover2.show()
+	$Drums.stop()
+	$Slow.stop() 
+	$Normal.stop()
+	$CanvasLayer/TimerNode/Timer.stop()
+	Global.paused = true

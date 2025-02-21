@@ -14,6 +14,8 @@ func _on_area_entered_obstacle(other_area: Area2D) -> void:
 	queue_free()
 
 func _process(delta: float) -> void:
+	if Global.paused:
+		return
 	if not is_borasc_active:
 		position.y += Global.player_speed * speed_multiplier * delta
 	else:

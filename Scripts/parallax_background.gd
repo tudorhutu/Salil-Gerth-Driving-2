@@ -8,6 +8,8 @@ func _ready() -> void:
 	SignalBus.connect("BORASC", Callable(self, "on_borasc"))
 
 func _process(delta: float) -> void:
+	if Global.paused:
+		return
 	Global.distance = scroll_offset.y/100
 	if not is_borasc_active:
 		scroll_offset.y += base_scroll_speed * Global.player_speed * delta

@@ -34,18 +34,20 @@ var original_sway_frequency: float = 1.0
 var original_sway_amplitude: float = 10.0
 var hit_effect_timer: Timer
 
+# NEW: Adjustable duration for the 360° hit rotation (in seconds)
+@export var hit_rotation_duration: float = 1.0
+
 func _ready() -> void:
+	$MainCar.play("idle")
 	var viewport_size = get_viewport_rect().size
 	position.x = viewport_size.x / 2
 	speed = (min_speed + max_speed) / 2
 	Global.player_speed = speed
 	_update_vertical_position(0)
 	
-	# Store original sway values
 	original_sway_frequency = sway_frequency
 	original_sway_amplitude = sway_amplitude
 	
-	# Initialize hit effect timer
 	hit_effect_timer = Timer.new()
 	hit_effect_timer.one_shot = true
 	add_child(hit_effect_timer)
@@ -67,7 +69,13 @@ func _ready() -> void:
 	SignalBus.connect("BORASC", Callable(self, "on_borasc"))
 
 func _process(delta: float) -> void:
+	if Global.paused:
+		return
 	if is_borasc:
+		$cargopants.stop()
+		$MainCar/PointLight2D.show()
+		$MainCar/PointLight2D2.show()
+		$MainCar.play("idle")
 		return
 	if is_in_dirt:
 		max_speed = 10
@@ -78,8 +86,10 @@ func _process(delta: float) -> void:
 	
 	# Speed management
 	if speed < min_speed:
+		$MainCar.speed_scale = 19
 		speed += vertical_frictiona * delta * 0.009
 	else:
+		$MainCar.speed_scale = 9
 		if Input.is_action_pressed("ui_up") and not is_in_dirt:
 			speed += acceleration_rate * delta
 		else:
@@ -106,10 +116,9 @@ func _process(delta: float) -> void:
 	
 	_update_vertical_position(delta)
 	
-	# Position calculation with dynamic sway
 	var center_x = get_viewport_rect().size.x / 2
 	var speed_factor = (speed - min_speed) / (max_speed - min_speed)
-	var dynamic_sway = 0
+	var dynamic_sway = 0.0
 	if not is_in_dirt:
 		dynamic_sway = sway_amplitude * (1 + speed_factor * 10) * sin(time_passed * TAU * sway_frequency)
 		
@@ -137,23 +146,30 @@ func _on_area_entered(area: Area2D) -> void:
 	_on_obstacle_hit(area)
 
 func _on_obstacle_hit(area: Area2D) -> void:
-	# If the collided obstacle is flagged as a powerup, ignore its hit effects.
+	# If the collided obstacle is flagged as a powerup, ignore hit effects.
 	if area.get_parent() and area.get_parent().has_meta("is_powerup") and area.get_parent().get_meta("is_powerup"):
 		return
-
 	if is_in_dirt:
 		return
 	
-	# Apply hit effects only for normal obstacles
+	if not is_borasc:
+		$MainCar/PointLight2D.hide()
+		$MainCar/PointLight2D2.hide()
+		$MainCar.play("OWIE")
+		$cargopants.play()
+
+	# Apply other hit effects after the animation finishes.
 	speed = min_speed * 0.5
 	Global.player_speed = speed
 	lateral_velocity = 0
 	time_passed = 0
 	
-	# Increase sway effects as a visual feedback of hit
+	# Increase sway effects as visual feedback.
 	sway_frequency = 3.0
 	sway_amplitude = 800.0
 	hit_effect_timer.start(1.0)
+
+	
 
 func _reset_sway_effects() -> void:
 	sway_frequency = original_sway_frequency
@@ -182,3 +198,12 @@ func on_borasc() -> void:
 	Global.player_speed = speed
 	collision_area.monitoring = true
 	is_borasc = false
+	
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
+
+
+func _on_main_car_animation_finished() -> void:
+	$MainCar/PointLight2D.show()
+	$MainCar/PointLight2D2.show()
+	$MainCar.play("idle") # Replace with function body.

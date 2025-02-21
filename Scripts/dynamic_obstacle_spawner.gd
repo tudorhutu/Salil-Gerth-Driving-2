@@ -34,6 +34,8 @@ func _ready() -> void:
 		dir.list_dir_end()
 
 func _process(delta: float) -> void:
+	if Global.paused:
+		return
 	# Calculate a factor (0.0 to 1.0) based on the current distance
 	# When Global.distance is >= distance_for_max_spawn, factor is 1.
 	var factor: float = clamp(Global.distance / distance_for_max_spawn, 0.0, 1.0)

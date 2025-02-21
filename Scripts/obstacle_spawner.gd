@@ -37,6 +37,8 @@ func _ready() -> void:
 		dir.list_dir_end()
 
 func _process(delta: float) -> void:
+	if Global.paused:
+		return
 	time_since_spawn += delta
 	time_since_powerup_spawn += delta
 	

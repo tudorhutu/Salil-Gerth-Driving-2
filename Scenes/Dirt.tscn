@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1abw7lf8iae7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wlnq"]
-size = Vector2(302, 1099)
+size = Vector2(284, 1099)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epjto"]
 size = Vector2(250, 1092)
@@ -9,7 +9,7 @@ size = Vector2(250, 1092)
 [node name="Dirt" type="Area2D"]
 
 [node name="DirtHitboxLeft" type="CollisionShape2D" parent="."]
-position = Vector2(141, 539.5)
+position = Vector2(132, 539.5)
 shape = SubResource("RectangleShape2D_7wlnq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

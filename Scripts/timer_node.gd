@@ -14,7 +14,3 @@ func _process(delta):
 	var minutes = int(time_left / 60)
 	var seconds = int(time_left) % 60
 	timer_label.text = "%02d:%02d" % [minutes, seconds]
-
-	# Optional: Hide label when timer stops
-	if timer.is_stopped():
-		timer_label.text = "00:00"

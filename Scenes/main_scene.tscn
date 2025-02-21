@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cn4fsgay8bat0"]
+[gd_scene load_steps=19 format=3 uid="uid://cn4fsgay8bat0"]
 
 [ext_resource type="PackedScene" uid="uid://c6848nhfw7043" path="res://Scenes/Road_Entities.tscn" id="1_8tk2h"]
 [ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_lba7u"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://q5hwgj4frx46" path="res://Sounds/drumss.wav" id="13_4imob"]
 [ext_resource type="AudioStream" uid="uid://bhmvlam3rjy85" path="res://Sounds/music for editing if ure good at it/melodyslow.mp3" id="14_hlef5"]
 [ext_resource type="AudioStream" uid="uid://bqyexx378xkqs" path="res://Sounds/music for editing if ure good at it/melodymid.mp3" id="15_4e43x"]
+[ext_resource type="AudioStream" uid="uid://bdwk6kie803q" path="res://Sounds/gameover (2).wav" id="16_rfdx5"]
 
 [sub_resource type="Shader" id="Shader_w38rg"]
 code = "shader_type canvas_item;
@@ -154,6 +155,34 @@ panning_strength = 0.0
 stream = ExtResource("15_4e43x")
 panning_strength = 0.0
 
+[node name="overr" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_rfdx5")
+volume_db = -0.095
+
+[node name="gover" type="Label" parent="."]
+offset_left = 249.0
+offset_top = 370.0
+offset_right = 2176.0
+offset_bottom = 726.0
+theme_override_fonts/font = ExtResource("12_facu8")
+theme_override_font_sizes/font_size = 281
+text = "Game Over"
+
+[node name="gover2" type="Label" parent="."]
+offset_left = 566.0
+offset_top = 663.0
+offset_right = 1425.0
+offset_bottom = 717.0
+theme_override_colors/font_color = Color(0.986752, 0.986752, 0.986752, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("12_facu8")
+theme_override_font_sizes/font_size = 54
+text = "press esc to go back to menu"
+
+[connection signal="timeout" from="CanvasLayer/TimerNode/Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="Drums" to="." method="_on_drums_finished"]
 [connection signal="finished" from="Slow" to="." method="_on_slow_finished"]
 [connection signal="finished" from="Normal" to="." method="_on_normal_finished"]

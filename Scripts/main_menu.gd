@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_play_pressed() -> void:	
 	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+	Global.paused = false
 
 func _on_kys_button_down() -> void:
 	get_tree().change_scene_to_file("res://Scenes/FUNNYY.tscn")
