@@ -1,17 +1,20 @@
-[gd_scene load_steps=22 format=3 uid="uid://ck3bnl8vy0k4l"]
+[gd_scene load_steps=26 format=3 uid="uid://ck3bnl8vy0k4l"]
 
-[ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="1_0vj7d"]
-[ext_resource type="Script" path="res://Scripts/outro.gd" id="1_qe5tl"]
-[ext_resource type="Texture2D" uid="uid://bet678qds0puo" path="res://Textures/2d_lights_and_shadows_neutral_point_light.png" id="2_agwmt"]
-[ext_resource type="Texture2D" uid="uid://b2hvrgb5hm5oo" path="res://Textures/untitled.png" id="3_gf0df"]
-[ext_resource type="Texture2D" uid="uid://pwyxg03kr3yx" path="res://Textures/Cutscenes/question_mark.jpg" id="3_h22dm"]
-[ext_resource type="Shader" path="res://Textures/Cutscenes/alpha_replace_color.gdshader" id="3_yix7s"]
-[ext_resource type="Texture2D" uid="uid://cgxpyw1d4frpm" path="res://Textures/Cutscenes/grass.png" id="4_gub6n"]
-[ext_resource type="Texture2D" uid="uid://we52i6dqiffn" path="res://Textures/Cutscenes/salil.png" id="4_pb1wf"]
-[ext_resource type="Texture2D" uid="uid://lw8wurgxarp8" path="res://Textures/Cutscenes/blood_splatter.png" id="5_6hgul"]
-[ext_resource type="Texture2D" uid="uid://uoi7kp76yq6o" path="res://Textures/Cutscenes/bloodpool.png" id="6_41lly"]
-[ext_resource type="Texture2D" uid="uid://dmg8hfndsvf2t" path="res://Textures/Cutscenes/wife_corpse_placeholder.png" id="6_s6u2a"]
-[ext_resource type="AudioStream" uid="uid://bwexmu5kbmbq" path="res://Sounds/wifedeadtheme.mp3" id="12_73tg7"]
+[ext_resource type="Script" path="res://Scripts/outro.gd" id="1_y2nk5"]
+[ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="2_gqalj"]
+[ext_resource type="Texture2D" uid="uid://bet678qds0puo" path="res://Textures/2d_lights_and_shadows_neutral_point_light.png" id="3_a5v1m"]
+[ext_resource type="Texture2D" uid="uid://bpt7ddplcpl1m" path="res://Textures/Cutscenes/grass.png" id="4_tn0e8"]
+[ext_resource type="Texture2D" uid="uid://nthpdkgnhvke" path="res://Textures/Cutscenes/blood_splatter.png" id="5_k6ekj"]
+[ext_resource type="Shader" path="res://Shaders/color_replace_keep_alpha.gdshader" id="6_0w6pm"]
+[ext_resource type="Texture2D" uid="uid://cxtc2vfkl8xa1" path="res://Textures/Cutscenes/bloodpool.png" id="6_8630g"]
+[ext_resource type="Texture2D" uid="uid://daycmitiy0q8y" path="res://Textures/Cutscenes/footprint.png" id="6_vu12i"]
+[ext_resource type="Texture2D" uid="uid://b030v6p1ncojt" path="res://Textures/Cutscenes/wife_corpse_placeholder.png" id="7_4yvd8"]
+[ext_resource type="Shader" path="res://Shaders/alpha_replace_color.gdshader" id="8_g0175"]
+[ext_resource type="Texture2D" uid="uid://d3g2jkf48xmgs" path="res://Textures/Cutscenes/salil.png" id="9_m7uld"]
+[ext_resource type="Texture2D" uid="uid://b2hvrgb5hm5oo" path="res://Textures/untitled.png" id="10_ag6qb"]
+[ext_resource type="Texture2D" uid="uid://bx6o8swk4lyi0" path="res://Textures/istockphoto-1365709788-612x612.png" id="11_7dwv0"]
+[ext_resource type="Texture2D" uid="uid://ddiqsvpewm4xm" path="res://Textures/Cutscenes/question_mark.jpg" id="12_kgmsb"]
+[ext_resource type="AudioStream" uid="uid://dpqxquha5ofyu" path="res://Sounds/Cutscenes/Dark theme.mp3" id="13_ltyn8"]
 
 [sub_resource type="Gradient" id="Gradient_qexc1"]
 colors = PackedColorArray(0.78, 0.54626, 0.3276, 1, 0, 0, 0, 1)
@@ -22,6 +25,12 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.646, 0.107)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b80do"]
+shader = ExtResource("6_0w6pm")
+shader_parameter/target_color = Vector4(0, 0, 0, 0)
+shader_parameter/replacement_color = Vector4(0.56, 0, 0, 1)
+shader_parameter/threshold = 1.0
+
 [sub_resource type="Gradient" id="Gradient_ov24n"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.95111, 0.460994, 1.34766e-06, 1)
@@ -30,12 +39,12 @@ colors = PackedColorArray(0.95111, 0.460994, 1.34766e-06, 1)
 gradient = SubResource("Gradient_ov24n")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7515q"]
-shader = ExtResource("3_yix7s")
+shader = ExtResource("8_g0175")
 shader_parameter/tolerance = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lqu0h"]
-shader = ExtResource("3_yix7s")
-shader_parameter/tolerance = 0.2
+shader = ExtResource("8_g0175")
+shader_parameter/tolerance = 0.218
 
 [sub_resource type="Animation" id="Animation_aocfw"]
 length = 0.001
@@ -126,7 +135,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HintsLayer/QuestionMarkReaction:visible")
+tracks/7/path = NodePath("TopMostLayer/QuestionMarkReaction:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -162,7 +171,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Blackout1:visible")
+tracks/10/path = NodePath("TopMostLayer/Blackout1:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -186,10 +195,34 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("HintsLayer/Disclaimer:visible")
+tracks/12/path = NodePath("TopMostLayer/Disclaimer:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Car/headlight:enabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Car/backlight:enabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -226,171 +259,210 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HouseRoot/House/CanvasLayer3/Salil:visible")
+tracks/2/path = NodePath("Car/headlight:enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3, 3.13333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.0666667, 3.8667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, false, true]
+"values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HouseRoot/House/CanvasLayer3/Salil:rotation")
+tracks/3/path = NodePath("Car/backlight:enabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.7, 3.93333, 4.96667, 5.2, 6.36667, 6.53333, 19, 27.1333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [-4.70769, -3.23486, -3.23486, -1.49509, -1.49509, 0.0, 0.0, 0.0]
+"times": PackedFloat32Array(0.166667, 3.8667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HouseRoot/House/CanvasLayer3/Salil:position")
+tracks/4/path = NodePath("HouseRoot/House/CanvasLayer3/Salil:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(7.43333, 10.3, 19, 27.1333, 32.4667, 36.1667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1854, 618), Vector2(2263, 609), Vector2(2263, 609), Vector2(2793, 609), Vector2(2793, 609), Vector2(2884, 609)]
+"times": PackedFloat32Array(0, 5.13334, 5.26667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Camera2D:zoom")
+tracks/5/path = NodePath("HouseRoot/House/CanvasLayer3/Salil:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(13.5, 18.1667, 19.2333, 27.1333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(5.83334, 6.06667, 7.10001, 7.33334, 8.50001, 8.66667, 21.1333, 29.2666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1.47, 1.47), Vector2(2, 2), Vector2(2, 2), Vector2(2.3, 2.3)]
+"values": [-4.70769, -3.23486, -3.23486, -1.49509, -1.49509, 0.0, 0.0, 0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Camera2D:position")
+tracks/6/path = NodePath("HouseRoot/House/CanvasLayer3/Salil:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(7.43333, 10.3, 11.1, 12.5667, 18.9667, 27.1667, 32.5, 36.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(9.56667, 12.4333, 21.1333, 29.2666, 34.6, 38.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1482, 612), Vector2(1713, 625), Vector2(1713, 625), Vector2(2378, 625), Vector2(2378, 625), Vector2(2798, 625), Vector2(2798, 625), Vector2(2968, 625)]
+"values": [Vector2(1854, 618), Vector2(2263, 609), Vector2(2263, 609), Vector2(2793, 609), Vector2(2793, 609), Vector2(2884, 609)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HintsLayer/QuestionMarkReaction:visible")
+tracks/7/path = NodePath("Camera2D:zoom")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 10.5667, 10.7, 18.2),
+"times": PackedFloat32Array(15.6333, 20.3, 21.3666, 29.2666),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
+"update": 0,
+"values": [Vector2(1.47, 1.47), Vector2(2, 2), Vector2(2, 2), Vector2(2.3, 2.3)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HouseRoot/House/CanvasLayer3/Door:rotation")
+tracks/8/path = NodePath("Camera2D:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(28.2667, 31.1333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(9.56667, 12.4333, 13.2333, 14.7, 21.1, 29.3, 34.6333, 38.3333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -1.91986]
+"values": [Vector2(1536, 612), Vector2(1713, 625), Vector2(1713, 625), Vector2(2378, 625), Vector2(2378, 625), Vector2(2798, 625), Vector2(2798, 625), Vector2(2968, 625)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight1:enabled")
+tracks/9/path = NodePath("TopMostLayer/QuestionMarkReaction:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(37.2333, 37.7667, 56.9602, 57.6),
+"times": PackedFloat32Array(0, 12.7, 12.8333, 20.3333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, true, true, false]
+"values": [false, false, true, false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight2:enabled")
+tracks/10/path = NodePath("HouseRoot/House/CanvasLayer3/Door:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(40.0398, 40.5731, 51, 51.6398),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, true, false]
+"times": PackedFloat32Array(30.4, 33.2666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.91986]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight3:enabled")
+tracks/11/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight1:enabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(43.3667, 43.9, 53.7602, 54.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 39.3666, 39.9, 54.0269, 54.6667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, true, false]
+"values": [false, false, true, true, false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("HouseRoot/House/CanvasLayer3/entrancelight:enabled")
+tracks/12/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight2:enabled")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0.1, 48.1333, 48.7667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 42.1731, 42.7064, 49.6935, 50.3333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true, false]
+"values": [false, false, true, true, false]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Blackout1:visible")
+tracks/13/path = NodePath("HouseRoot/House/CanvasLayer3/interiorlight3:enabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 48.0333, 48.7667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 45.4, 45.9333, 51.8602, 52.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, false, true]
+"values": [false, false, true, true, false]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Blackout2:visible")
+tracks/14/path = NodePath("HouseRoot/House/CanvasLayer3/entrancelight:enabled")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 48.0333, 48.7667),
+"times": PackedFloat32Array(0.1, 47.3333, 47.9667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, false, true]
+"values": [true, true, false]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("HintsLayer/Disclaimer:visible")
+tracks/15/path = NodePath("TopMostLayer/Blackout1:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0.0666667, 59.6667, 60.4667),
+"times": PackedFloat32Array(0, 47.2333, 47.9667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("TopMostLayer/Blackout2:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 47.2333, 47.9667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TopMostLayer/Disclaimer:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0.0666667, 55.6, 56.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/18/type = "audio"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("AudioStreamPlayer")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 80.362,
+"stream": ExtResource("13_ltyn8")
+}],
+"times": PackedFloat32Array(12.7333)
+}
+tracks/18/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3op6"]
 _data = {
@@ -399,7 +471,7 @@ _data = {
 }
 
 [node name="Outro" type="Node2D"]
-script = ExtResource("1_qe5tl")
+script = ExtResource("1_y2nk5")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.24542, 0.2394, 0.42, 1)
@@ -412,7 +484,7 @@ metadata/_edit_lock_ = true
 [node name="RoadTexture" type="Sprite2D" parent="RoadRoot"]
 position = Vector2(984.25, 698.373)
 scale = Vector2(2.34464, 2.17424)
-texture = ExtResource("1_0vj7d")
+texture = ExtResource("2_gqalj")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="RoadRoot"]
@@ -421,7 +493,7 @@ scale = Vector2(4, 1.5)
 color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
-texture = ExtResource("2_agwmt")
+texture = ExtResource("3_a5v1m")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D3" type="PointLight2D" parent="RoadRoot"]
@@ -430,7 +502,7 @@ scale = Vector2(4, 1.5)
 color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
-texture = ExtResource("2_agwmt")
+texture = ExtResource("3_a5v1m")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="RoadRoot"]
@@ -439,37 +511,34 @@ scale = Vector2(4, 1.5)
 color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
-texture = ExtResource("2_agwmt")
+texture = ExtResource("3_a5v1m")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D5" type="PointLight2D" parent="RoadRoot"]
-position = Vector2(1439, 1271)
-scale = Vector2(4, 1.5)
+position = Vector2(1578, 1095)
+scale = Vector2(3.32031, 2.08203)
 color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
-texture = ExtResource("2_agwmt")
-metadata/_edit_lock_ = true
+texture = ExtResource("3_a5v1m")
 
 [node name="PointLight2D6" type="PointLight2D" parent="RoadRoot"]
-position = Vector2(1439, 714)
-scale = Vector2(4, 1.5)
+position = Vector2(1619.5, 693)
+scale = Vector2(3.16797, 2.24219)
 color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 range_layer_max = 1
-texture = ExtResource("2_agwmt")
-metadata/_edit_lock_ = true
+texture = ExtResource("3_a5v1m")
 
 [node name="PointLight2D8" type="PointLight2D" parent="RoadRoot"]
-position = Vector2(1439, 195)
-scale = Vector2(4, 1.5)
+position = Vector2(1614.5, 288.5)
+scale = Vector2(3.20703, 2.23828)
 color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 11.15
 range_layer_min = -512
 range_layer_max = 1
-texture = ExtResource("2_agwmt")
-metadata/_edit_lock_ = true
+texture = ExtResource("3_a5v1m")
 
 [node name="HouseRoot" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -478,47 +547,47 @@ metadata/_edit_lock_ = true
 
 [node name="Grass" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2104, 321)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="Grass2" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2104, 704)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="Grass3" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2104, 1088)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="Grass4" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2488, 321)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="Grass5" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2488, 704)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="Grass6" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2488, 1088)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="Grass7" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2872, 321)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="Grass8" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2872, 704)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="Grass9" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2872, 1088)
-texture = ExtResource("4_gub6n")
+texture = ExtResource("4_tn0e8")
 metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="ColorRect" parent="HouseRoot/Yard"]
@@ -531,11 +600,10 @@ color = Color(0.662626, 0.676524, 0.33986, 1)
 metadata/_edit_lock_ = true
 
 [node name="blood" type="Sprite2D" parent="HouseRoot/Yard"]
-position = Vector2(2491, 617)
-rotation = 0.195543
-scale = Vector2(0.269143, 0.321858)
-texture = ExtResource("5_6hgul")
-metadata/_edit_lock_ = true
+position = Vector2(2490, 607)
+rotation = -0.0444004
+scale = Vector2(-0.269, -0.322)
+texture = ExtResource("5_k6ekj")
 
 [node name="PointLight2D2" type="PointLight2D" parent="HouseRoot/Yard"]
 position = Vector2(2058, 718)
@@ -553,7 +621,7 @@ metadata/_edit_lock_ = true
 
 [node name="PointLight2D3" type="PointLight2D" parent="HouseRoot/Yard"]
 position = Vector2(2360, 720)
-scale = Vector2(6.34376, 6.48409)
+scale = Vector2(7.875, 8.0492)
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
 metadata/_edit_lock_ = true
@@ -579,6 +647,20 @@ range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
 metadata/_edit_lock_ = true
 
+[node name="footprint" type="Sprite2D" parent="HouseRoot/Yard"]
+material = SubResource("ShaderMaterial_b80do")
+position = Vector2(2371, 629)
+rotation = -2.3259
+scale = Vector2(0.0166594, 0.0166594)
+texture = ExtResource("6_vu12i")
+
+[node name="footprint2" type="Sprite2D" parent="HouseRoot/Yard"]
+material = SubResource("ShaderMaterial_b80do")
+position = Vector2(2349, 656)
+rotation = -4.83455
+scale = Vector2(0.017, -0.017)
+texture = ExtResource("6_vu12i")
+
 [node name="House" type="Node2D" parent="HouseRoot"]
 
 [node name="TextureRect2" type="ColorRect" parent="HouseRoot/House"]
@@ -603,6 +685,7 @@ offset_right = 2937.0
 offset_bottom = 534.0
 scale = Vector2(2.63965, 3.1039)
 color = Color(0.583058, 0.42484, 0.399891, 1)
+metadata/_edit_lock_ = true
 
 [node name="Wall" type="ColorRect" parent="HouseRoot/House/CanvasLayer3"]
 offset_left = 2817.0
@@ -621,9 +704,9 @@ scale = Vector2(2.63965, 3.1039)
 color = Color(0, 0, 0, 1)
 
 [node name="Door" type="TextureRect" parent="HouseRoot/House/CanvasLayer3"]
-offset_left = 2817.0
+offset_left = 2814.0
 offset_top = 577.0
-offset_right = 2826.0
+offset_right = 2823.0
 offset_bottom = 645.0
 texture = SubResource("GradientTexture2D_wqxxo")
 expand_mode = 1
@@ -647,6 +730,7 @@ metadata/_edit_lock_ = true
 [node name="interiorlight2" type="PointLight2D" parent="HouseRoot/House/CanvasLayer3"]
 position = Vector2(2970, 613)
 scale = Vector2(3.37499, 3.44965)
+enabled = false
 energy = 1.43
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
@@ -655,65 +739,79 @@ metadata/_edit_lock_ = true
 [node name="interiorlight3" type="PointLight2D" parent="HouseRoot/House/CanvasLayer3"]
 position = Vector2(3084, 613)
 scale = Vector2(3.37499, 3.44965)
+enabled = false
 energy = 1.43
 range_layer_max = 1
 texture = SubResource("GradientTexture2D_8cymi")
 metadata/_edit_lock_ = true
 
 [node name="blood" type="Sprite2D" parent="HouseRoot/House/CanvasLayer3"]
-position = Vector2(3081, 607)
+position = Vector2(3099, 600)
 scale = Vector2(0.0575662, 0.0575663)
-texture = ExtResource("6_41lly")
+texture = ExtResource("6_8630g")
+
+[node name="blood2" type="Sprite2D" parent="HouseRoot/House/CanvasLayer3"]
+position = Vector2(2980, 584)
+rotation = -2.00499
+scale = Vector2(0.056909, 0.448406)
+texture = ExtResource("5_k6ekj")
 
 [node name="Wife" type="Sprite2D" parent="HouseRoot/House/CanvasLayer3"]
 position = Vector2(3081, 607)
 scale = Vector2(0.127118, 0.127118)
-texture = ExtResource("6_s6u2a")
+texture = ExtResource("7_4yvd8")
 
 [node name="Salil" type="Sprite2D" parent="HouseRoot/House/CanvasLayer3"]
 material = SubResource("ShaderMaterial_7515q")
 position = Vector2(1854, 618)
 rotation = -4.70769
 scale = Vector2(0.0480061, 0.0474032)
-texture = ExtResource("4_pb1wf")
-
-[node name="blood2" type="Sprite2D" parent="HouseRoot/House/CanvasLayer3"]
-position = Vector2(2980, 584)
-rotation = -2.00499
-scale = Vector2(0.056909, 0.448406)
-texture = ExtResource("5_6hgul")
+texture = ExtResource("9_m7uld")
 
 [node name="Car" type="Sprite2D" parent="."]
 position = Vector2(1410, 1291)
 rotation = 3.14159
 scale = Vector2(0.322499, 0.318449)
-texture = ExtResource("3_gf0df")
+texture = ExtResource("10_ag6qb")
 metadata/_edit_lock_ = true
 
-[node name="HintsLayer" type="CanvasLayer" parent="."]
+[node name="headlight" type="PointLight2D" parent="Car"]
+position = Vector2(-6.20429, -1086.52)
+rotation = -1.5708
+scale = Vector2(3.33761, 2.56067)
+color = Color(0.647541, 0.436712, 0.144562, 0.776471)
+energy = 1.68
+range_layer_min = -512
+texture = ExtResource("11_7dwv0")
+
+[node name="backlight" type="PointLight2D" parent="Car"]
+position = Vector2(0.00267267, 1067.67)
+rotation = 1.57079
+scale = Vector2(3.33761, 2.8227)
+color = Color(0.96972, 0.214285, 0.214381, 0.776471)
+energy = 7.33
+range_layer_min = -512
+texture = ExtResource("11_7dwv0")
+
+[node name="TopMostLayer" type="CanvasLayer" parent="."]
 layer = 2
 follow_viewport_enabled = true
 
-[node name="QuestionMarkReaction" type="Sprite2D" parent="HintsLayer"]
+[node name="QuestionMarkReaction" type="Sprite2D" parent="TopMostLayer"]
 z_index = 4
 material = SubResource("ShaderMaterial_lqu0h")
 position = Vector2(2266, 582)
 scale = Vector2(0.0228773, 0.0228773)
-texture = ExtResource("3_h22dm")
+texture = ExtResource("12_kgmsb")
 
-[node name="Disclaimer" type="Label" parent="HintsLayer"]
+[node name="Disclaimer" type="Label" parent="TopMostLayer"]
 offset_left = 2895.0
 offset_top = 601.0
 offset_right = 3059.0
 offset_bottom = 624.0
 text = "Don't drink and drive"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_j3op6")
-}
-
-[node name="Blackout1" type="ColorRect" parent="."]
+[node name="Blackout1" type="ColorRect" parent="TopMostLayer"]
 offset_left = 2502.0
 offset_top = 333.0
 offset_right = 2622.0
@@ -721,7 +819,8 @@ offset_bottom = 510.0
 scale = Vector2(2.63965, 3.1039)
 color = Color(0, 0, 0, 1)
 
-[node name="Blackout2" type="ColorRect" parent="."]
+[node name="Blackout2" type="ColorRect" parent="TopMostLayer"]
+visible = false
 offset_left = 3124.0
 offset_top = 333.0
 offset_right = 3244.0
@@ -729,17 +828,16 @@ offset_bottom = 510.0
 scale = Vector2(2.63965, 3.1039)
 color = Color(0, 0, 0, 1)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j3op6")
+}
+
 [node name="Camera2D" type="Camera2D" parent="."]
 light_mask = 7
 visibility_layer = 7
 z_index = 2
 position = Vector2(1482, 612)
 zoom = Vector2(1.47, 1.47)
-
-[node name="wife_dead_player" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(2656, 605)
-stream = ExtResource("12_73tg7")
-volume_db = 2.811
-max_distance = 36075.0
-attenuation = 24.2516
-panning_strength = 0.84
