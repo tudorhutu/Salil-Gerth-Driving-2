@@ -1,50 +1,25 @@
 extends Node2D
 
-var paused := false
-var drums_player: AudioStreamPlayer
-var harmony_player: AudioStreamPlayer
+var paused: bool = false
 
 func _ready() -> void:
+	$Drums.play()
+	$Slow.play()
+	$Normal.play()
 	process_mode = PROCESS_MODE_ALWAYS
 	get_tree().paused = false
-
-
-	drums_player = AudioStreamPlayer.new()
-	harmony_player = AudioStreamPlayer.new()
-	
-
-	drums_player.stream = preload("res://Sounds/drumss.wav")
-	harmony_player.stream = preload("res://Sounds/drumss.wav")
-	
-
-	drums_player.volume_db = calculate_drums_volume()
-	harmony_player.volume_db = -25.0  
-	drums_player.finished.connect(_on_drums_finished)
-	harmony_player.finished.connect(_on_harmony_finished)
-	
-
-	add_child(drums_player)
-	add_child(harmony_player)
-	
-	drums_player.play()
-	harmony_player.play()
-
-func _on_drums_finished() -> void:
-	drums_player.play()
-
-func _on_harmony_finished() -> void:
-	harmony_player.play()
+	$Slow.volume_db-=100
+	$Drums.volume_db = -15
 
 func _process(delta: float) -> void:
-	drums_player.volume_db = calculate_drums_volume()
-
-func calculate_drums_volume() -> float:
-	var min_speed = 10.0
-	var max_speed = 70.0
-	var min_volume = -35.0
-	var max_volume = -5.0 
-	var speed = clamp(Global.player_speed, min_speed, max_speed)
-	return lerp(min_volume, max_volume, (speed - min_speed) / (max_speed - min_speed))
+	var speedpercent = Global.player_speed/60.0 * 100
+	$Drums.volume_db = -15 + speedpercent/10.0 
+	if(Global.player_speed < 9.0):
+		$Slow.volume_db = 0
+		$Normal.volume_db = -100
+	else:
+		$Slow.volume_db = -100
+		$Normal.volume_db = 0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -54,3 +29,13 @@ func toggle_pause() -> void:
 	paused = !paused
 	get_tree().paused = paused
 	print("Game Paused: ", paused)
+
+
+func _on_drums_finished() -> void:
+	$Drums.play() 
+
+func _on_slow_finished() -> void:
+	$Slow.play() 
+
+func _on_normal_finished() -> void:
+	$Normal.play()

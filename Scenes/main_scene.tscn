@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cn4fsgay8bat0"]
+[gd_scene load_steps=18 format=3 uid="uid://cn4fsgay8bat0"]
 
 [ext_resource type="PackedScene" uid="uid://c6848nhfw7043" path="res://Scenes/Road_Entities.tscn" id="1_8tk2h"]
 [ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_lba7u"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cqrts0dnqc5h" path="res://Textures/progressbar.png" id="8_vc4eb"]
 [ext_resource type="Script" path="res://Scripts/timer_node.gd" id="11_ee2rj"]
 [ext_resource type="FontFile" uid="uid://bhuhi4yo5rvro" path="res://Fonts/yoster.ttf" id="12_facu8"]
+[ext_resource type="AudioStream" uid="uid://q5hwgj4frx46" path="res://Sounds/drumss.wav" id="13_4imob"]
+[ext_resource type="AudioStream" uid="uid://bhmvlam3rjy85" path="res://Sounds/music for editing if ure good at it/melodyslow.mp3" id="14_hlef5"]
+[ext_resource type="AudioStream" uid="uid://bqyexx378xkqs" path="res://Sounds/music for editing if ure good at it/melodymid.mp3" id="15_4e43x"]
 
 [sub_resource type="Shader" id="Shader_w38rg"]
 code = "shader_type canvas_item;
@@ -138,3 +141,19 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("8_hta84")
+
+[node name="Drums" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_4imob")
+panning_strength = 0.0
+
+[node name="Slow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_hlef5")
+panning_strength = 0.0
+
+[node name="Normal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_4e43x")
+panning_strength = 0.0
+
+[connection signal="finished" from="Drums" to="." method="_on_drums_finished"]
+[connection signal="finished" from="Slow" to="." method="_on_slow_finished"]
+[connection signal="finished" from="Normal" to="." method="_on_normal_finished"]
