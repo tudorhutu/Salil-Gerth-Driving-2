@@ -3,7 +3,7 @@ extends Control
 @export var bar_margin: int = 20
 @export var bar_height: float = 10.0
 @export var min_value: float = 0.0
-@export var max_value: float = 20.0
+@export var max_value: float = 2000.0
 
 var current_progress: float = 0.0
 
