@@ -1,17 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://ed1ecc7dj77i"]
+[gd_scene load_steps=28 format=3 uid="uid://ed1ecc7dj77i"]
 
 [ext_resource type="Script" path="res://Scripts/intro.gd" id="1_kdjh1"]
 [ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="2_wiy02"]
 [ext_resource type="Texture2D" uid="uid://bet678qds0puo" path="res://Textures/2d_lights_and_shadows_neutral_point_light.png" id="3_1xkhv"]
-[ext_resource type="Texture2D" uid="uid://cgxpyw1d4frpm" path="res://Textures/Cutscenes/grass.png" id="4_t81wa"]
+[ext_resource type="Texture2D" uid="uid://bpt7ddplcpl1m" path="res://Textures/Cutscenes/grass.png" id="4_t81wa"]
 [ext_resource type="Shader" path="res://Shaders/color_replace_keep_alpha.gdshader" id="6_qjfeb"]
-[ext_resource type="Texture2D" uid="uid://cawocnamf62vn" path="res://Textures/Cutscenes/footprint.png" id="7_1cvth"]
-[ext_resource type="Texture2D" uid="uid://dd00vmdgy3e28" path="res://Textures/png-clipart-car-pixel-art-pixel-rectangle-symmetry-thumbnail.png" id="7_7xh8n"]
-[ext_resource type="AudioStream" uid="uid://wsoqh87fl8c" path="res://Sounds/Cutscenes/car_ignition.wav" id="12_6c8lf"]
+[ext_resource type="Texture2D" uid="uid://daycmitiy0q8y" path="res://Textures/Cutscenes/footprint.png" id="7_1cvth"]
+[ext_resource type="Texture2D" uid="uid://cvew4tppscxs8" path="res://Textures/Cutscenes/salil2.png" id="8_7okfb"]
+[ext_resource type="Texture2D" uid="uid://bhtdj508t3awx" path="res://Textures/Obstacles/DynamicObstacles/car1.png" id="9_6xw0k"]
+[ext_resource type="Texture2D" uid="uid://cqetoc7cdmcmf" path="res://Textures/Obstacles/DynamicObstacles/car2.png" id="10_8sgyn"]
+[ext_resource type="AudioStream" uid="uid://qmkixe3juam1" path="res://Sounds/Cutscenes/car_ignition.wav" id="12_6c8lf"]
 [ext_resource type="Shader" path="res://Shaders/alpha_replace_color.gdshader" id="12_gdwuy"]
-[ext_resource type="AudioStream" uid="uid://ctkc01msa64wf" path="res://Sounds/Cutscenes/car_engine.wav" id="13_yu44l"]
-[ext_resource type="AudioStream" uid="uid://xtkebgx3cqti" path="res://Sounds/Cutscenes/night_ambient.mp3" id="14_r43kt"]
-[ext_resource type="Texture2D" uid="uid://we52i6dqiffn" path="res://Textures/Cutscenes/salil.png" id="16_8aes7"]
+[ext_resource type="AudioStream" uid="uid://bg2210iurokuo" path="res://Sounds/Cutscenes/car_engine.wav" id="13_yu44l"]
+[ext_resource type="AudioStream" uid="uid://c500672qbs7j5" path="res://Sounds/Cutscenes/night_ambient.mp3" id="14_r43kt"]
+[ext_resource type="Texture2D" uid="uid://d3g2jkf48xmgs" path="res://Textures/Cutscenes/salil.png" id="16_8aes7"]
 [ext_resource type="Texture2D" uid="uid://b2hvrgb5hm5oo" path="res://Textures/untitled.png" id="17_6b76d"]
 [ext_resource type="Texture2D" uid="uid://bx6o8swk4lyi0" path="res://Textures/istockphoto-1365709788-612x612.png" id="18_sn7ik"]
 
@@ -596,30 +598,6 @@ rotation = -4.83455
 scale = Vector2(0.017, -0.017)
 texture = ExtResource("7_1cvth")
 
-[node name="Sprite2D" type="Sprite2D" parent="HouseRoot/Yard"]
-position = Vector2(2803, 335)
-rotation = 1.69294
-scale = Vector2(0.181755, 0.181755)
-texture = ExtResource("7_7xh8n")
-
-[node name="Sprite2D2" type="Sprite2D" parent="HouseRoot/Yard"]
-position = Vector2(2537, 421)
-rotation = 4.71582
-scale = Vector2(0.181755, 0.181755)
-texture = ExtResource("7_7xh8n")
-
-[node name="Sprite2D4" type="Sprite2D" parent="HouseRoot/Yard"]
-position = Vector2(2714, 427)
-rotation = 4.49949
-scale = Vector2(0.181755, 0.181755)
-texture = ExtResource("7_7xh8n")
-
-[node name="Sprite2D3" type="Sprite2D" parent="HouseRoot/Yard"]
-position = Vector2(2580, 345)
-rotation = 7.68265
-scale = Vector2(0.181755, 0.181755)
-texture = ExtResource("7_7xh8n")
-
 [node name="House" type="Node2D" parent="HouseRoot"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HouseRoot/House"]
@@ -732,10 +710,11 @@ metadata/_edit_lock_ = true
 
 [node name="Salil2" type="Sprite2D" parent="HouseRoot/House/CanvasLayer"]
 material = SubResource("ShaderMaterial_7515q")
+use_parent_material = true
 position = Vector2(-722, 603)
 rotation = -6.29707
 scale = Vector2(0.0480061, 0.0474032)
-texture = ExtResource("16_8aes7")
+texture = ExtResource("8_7okfb")
 metadata/_edit_lock_ = true
 
 [node name="Salil" type="Sprite2D" parent="HouseRoot/House/CanvasLayer"]
@@ -745,6 +724,18 @@ rotation = -6.27369
 scale = Vector2(0.0480061, 0.0474032)
 texture = ExtResource("16_8aes7")
 metadata/_edit_lock_ = true
+
+[node name="Car1" type="Sprite2D" parent="HouseRoot/House/CanvasLayer"]
+position = Vector2(-410, 340)
+rotation = 1.28922
+scale = Vector2(1.16772, 1.16772)
+texture = ExtResource("9_6xw0k")
+
+[node name="Car2" type="Sprite2D" parent="HouseRoot/House/CanvasLayer"]
+position = Vector2(-255, 331)
+rotation = 1.7058
+scale = Vector2(1.18174, 1.18174)
+texture = ExtResource("10_8sgyn")
 
 [node name="Car" type="Sprite2D" parent="."]
 position = Vector2(-162, 406)
@@ -814,7 +805,7 @@ offset_top = 595.0
 offset_right = -539.0
 offset_bottom = 618.0
 theme_override_font_sizes/font_size = 20
-text = "Eh, what could go wrong?"
+text = "Eh, nothing can go wrong"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
@@ -850,5 +841,17 @@ texture = ExtResource("7_1cvth")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 37.0
 autostart = true
+
+[node name="Car1" type="Sprite2D" parent="."]
+position = Vector2(-314, 424)
+rotation = -1.78067
+scale = Vector2(1.19809, 1.19809)
+texture = ExtResource("9_6xw0k")
+
+[node name="Car2" type="Sprite2D" parent="."]
+position = Vector2(-502, 422)
+rotation = -1.64014
+scale = Vector2(1.19607, 1.19607)
+texture = ExtResource("10_8sgyn")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
