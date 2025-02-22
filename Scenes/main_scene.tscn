@@ -135,7 +135,7 @@ theme_override_fonts/font = ExtResource("12_facu8")
 theme_override_font_sizes/font_size = 54
 
 [node name="Timer" type="Timer" parent="CanvasLayer/TimerNode"]
-wait_time = 180.0
+wait_time = 150.0
 
 [node name="Drums" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_4imob")

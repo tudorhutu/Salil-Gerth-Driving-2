@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 		if Global.endlessLives == 0:
 			$livesLeft.text = 'Don \'t puke!'
 		if Global.endlessLives < 0:
+			Global.storyDone = true
 			$gover.show()
 			$overr.play()
 			$gover2.show()

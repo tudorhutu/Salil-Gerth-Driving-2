@@ -42,7 +42,9 @@ func flash_lights():
 
 func _process(delta: float) -> void:
 	time_passed += delta * pulse_speed
-	
+	if Input.is_action_pressed("ui_up"):
+		get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+		
 	# Apply pulsating effect to each light
 	for light in lights:
 		if is_instance_valid(light):

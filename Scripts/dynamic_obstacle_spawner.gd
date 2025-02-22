@@ -37,6 +37,7 @@ func _ready() -> void:
 		dir.list_dir_end()
 
 func _process(delta: float) -> void:
+	
 	if Global.paused:
 		return
 	# Calculate a factor (0.0 to 1.0) based on the current distance
