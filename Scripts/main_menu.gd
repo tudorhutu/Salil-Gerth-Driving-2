@@ -53,8 +53,9 @@ func _on_kys_mouse_entered() -> void:
 
 
 func _on_quit_mouse_entered() -> void:
-	$hober.play()
-	print("baaaaaaaaaaaaaAAAAAAAAAAAAAAAA")
+	if $quit.disabled == false : 
+		$hober.play()
+		print("baaaaaaaaaaaaaAAAAAAAAAAAAAAAA")
 
 
 func _on_play_2_pressed() -> void:
