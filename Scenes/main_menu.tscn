@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnnhg3vsqse1k"]
+[gd_scene load_steps=10 format=3 uid="uid://dnnhg3vsqse1k"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_u10sa"]
 [ext_resource type="Theme" uid="uid://bprtsqppvpblx" path="res://Textures/themes/forbuttons.tres" id="2_1ii1q"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://7e44jqfklj5p" path="res://Textures/MENU/EXTREMELY LOUD INCORRECT BUZZER [TubeRipper.com].mp3" id="6_tqrll"]
 [ext_resource type="Texture2D" uid="uid://clpvv601x4f1y" path="res://Textures/MENU/hello.png" id="7_p17o5"]
 [ext_resource type="Texture2D" uid="uid://bsh75j3obi3la" path="res://Textures/MENU/dead-wife.png" id="8_6vofa"]
+[ext_resource type="AudioStream" uid="uid://xtkebgx3cqti" path="res://Sounds/Cutscenes/night_ambient.mp3" id="9_a2u4s"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,6 +27,16 @@ offset_right = 374.0
 offset_bottom = 1003.0
 theme = ExtResource("2_1ii1q")
 text = "Play"
+
+[node name="Label" type="Label" parent="play"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -34.0
+offset_right = 285.0
+offset_bottom = -11.0
+theme_override_colors/font_color = Color(0.594965, 0.128368, 0.25507, 1)
+theme_override_fonts/font = ExtResource("4_2t6j1")
+text = "press DOWN to skip the cutscenes"
 
 [node name="kys" type="Button" parent="."]
 layout_mode = 2
@@ -55,6 +66,7 @@ offset_right = 638.0
 offset_bottom = 640.0
 mouse_filter = 2
 texture = ExtResource("2_c5vih")
+metadata/_edit_lock_ = true
 
 [node name="NO" type="Label" parent="."]
 visible = false
@@ -121,8 +133,14 @@ focus_mode = 0
 theme = ExtResource("2_1ii1q")
 text = "Endless"
 
+[node name="mainambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_a2u4s")
+volume_db = -22.521
+autoplay = true
+
 [connection signal="focus_entered" from="play" to="." method="_on_play_focus_entered"]
 [connection signal="mouse_entered" from="play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="play" to="." method="_on_play_mouse_exited"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="button_down" from="kys" to="." method="_on_kys_button_down"]
 [connection signal="mouse_entered" from="kys" to="." method="_on_kys_mouse_entered"]
@@ -130,3 +148,4 @@ text = "Endless"
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="play2" to="." method="_on_play_2_mouse_entered"]
 [connection signal="pressed" from="play2" to="." method="_on_play_2_pressed"]
+[connection signal="finished" from="mainambience" to="." method="_on_mainambience_finished"]

@@ -496,10 +496,9 @@ position = Vector2(0, -74)
 metadata/_edit_lock_ = true
 
 [node name="RoadTexture" type="Sprite2D" parent="RoadRoot"]
-position = Vector2(984.25, 698.373)
-scale = Vector2(2.34464, 2.17424)
+position = Vector2(1009.5, 748.5)
+scale = Vector2(0.57544, 0.678223)
 texture = ExtResource("2_gqalj")
-metadata/_edit_lock_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(534, 1271)

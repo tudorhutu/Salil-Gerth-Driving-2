@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$play/Label.hide()
 	$play2.disabled = true
 	$salillmenu/deadwife.hide()
 	$salillmenu/TextureRect.show()
@@ -42,6 +43,7 @@ func _on_quit_pressed() -> void:
 
 func _on_play_mouse_entered() -> void:
 	$hober.play()
+	$play/Label.show()
 	print("baaaaaaaaaaaaaAAAAAAAAAAAAAAAA")
 
 
@@ -63,3 +65,11 @@ func _on_play_2_pressed() -> void:
 func _on_play_2_mouse_entered() -> void:
 	if Global.storyDone:
 		$hober.play()
+
+
+func _on_play_mouse_exited() -> void:
+	$play/Label.hide()
+
+
+func _on_mainambience_finished() -> void:
+	$mainambience.play()
