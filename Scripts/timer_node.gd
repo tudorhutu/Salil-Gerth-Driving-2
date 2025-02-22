@@ -22,9 +22,14 @@ func _process(delta):
 func on_borasc():
 	# When BORASC is triggered, decrease the timer's remaining time by 20 seconds.
 	var current_time_left = timer.time_left
-	var new_time_left = max(current_time_left - 20, 0)
-	
-	# Stop and update the timer with the new remaining time.
-	timer.stop()
-	timer.wait_time = new_time_left
-	timer.start()
+	if current_time_left > 20:
+		var new_time_left = max(current_time_left - 20, 0)
+		# Stop and update the timer with the new remaining time.
+		timer.stop()
+		timer.wait_time = new_time_left
+		timer.start()
+	if current_time_left <= 20:
+		print("more")
+		timer.stop()
+		timer.wait_time = 1
+		timer.start()
