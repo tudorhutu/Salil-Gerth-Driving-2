@@ -748,7 +748,6 @@ texture = ExtResource("17_6b76d")
 position = Vector2(-6.20429, -1086.52)
 rotation = -1.5708
 scale = Vector2(3.33761, 2.56067)
-enabled = false
 color = Color(0.647541, 0.436712, 0.144562, 0.776471)
 energy = 1.68
 range_layer_min = -512
@@ -809,13 +808,15 @@ theme_override_font_sizes/font_size = 20
 text = "Eh, nothing can go wrong"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -17.542
 
 [node name="music" type="AudioStreamPlayer" parent="AudioStreamPlayer"]
 stream = ExtResource("14_svtlc")
-volume_db = -8.436
+volume_db = -20.966
 autoplay = true
 
 [node name="Ambient" type="AudioStreamPlayer" parent="."]
+volume_db = -12.824
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
