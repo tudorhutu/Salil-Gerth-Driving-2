@@ -17,7 +17,7 @@ func _ready() -> void:
 	$Distance.show()
 	$livesLeft.hide()
 	if Global.isEndless:
-		Global.endlessLives = -1
+		Global.endlessLives = 3
 		$livesLeft.show()
 		$EndlessScore.show()
 		$Distance.hide()
