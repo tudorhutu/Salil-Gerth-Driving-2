@@ -55,9 +55,11 @@ func _process(delta: float) -> void:
 			spawn_powerup()
 
 func spawn_obstacle() -> void:
-	# Determine the x coordinate for the obstacle spawn.
-	# Using the average of two random numbers biases the spawn location toward the center.
-	var t = (rng.randf() + rng.randf()) / 2.0
+	# Instead of averaging two random values, we compress the deviation:
+	var base_t = (rng.randf() + rng.randf()) / 2.0  # already biased toward 0.5
+	# Compress deviation: values will be closer to 0.5
+	var t = 0.5 + (base_t - 0.5) * 0.5
+	# Lerp between 400 and 1600 using the compressed t. This results in x positions roughly between 850 and 1150.
 	var x_pos = lerp(400, 1600, t)
 	
 	# Choose a texture from the list, excluding powerup.png.
@@ -72,7 +74,7 @@ func spawn_obstacle() -> void:
 	else:
 		chosen_texture = obstacle_texture
 	
-	# Create warning sprite using the regular warning texture.
+	# Create a warning sprite using the regular warning texture.
 	var warning_sprite = Sprite2D.new()
 	warning_sprite.texture = load("res://Textures/warning.png")
 	warning_sprite.centered = true
@@ -120,7 +122,7 @@ func spawn_obstacle() -> void:
 	
 	obstacle_sprite.position = Vector2(x_pos, 0)
 	add_child(obstacle_sprite)
-
+	
 func spawn_powerup() -> void:
 	# Determine the x coordinate for the powerup spawn.
 	var x_pos = rng.randi_range(400, 1600)

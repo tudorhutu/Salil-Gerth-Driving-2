@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://dsg7d6kge32js"]
+[gd_scene load_steps=169 format=3 uid="uid://dsg7d6kge32js"]
 
 [ext_resource type="Script" path="res://Scripts/car.gd" id="1_ifyty"]
 [ext_resource type="Texture2D" uid="uid://cq16o4g810exi" path="res://Textures/Animations/owie/0001.png" id="2_8srbc"]
@@ -163,6 +163,9 @@
 [ext_resource type="Texture2D" uid="uid://x0qc0v6r5oh0" path="res://Textures/Animations/gonger/0080.png" id="81_5w05j"]
 [ext_resource type="Texture2D" uid="uid://bx3h5pxp0prnl" path="res://Textures/Animations/owie/0080.png" id="81_ial56"]
 [ext_resource type="AudioStream" uid="uid://cphyef6no5584" path="res://Sounds/music for editing if ure good at it/valeu.mp3" id="163_8i26e"]
+[ext_resource type="AudioStream" uid="uid://cp2g2cxkesctw" path="res://Sounds/borals.wav" id="164_05b6n"]
+[ext_resource type="AudioStream" uid="uid://cdx7q22ap3k4o" path="res://Sounds/brr.mp3" id="165_1vbbx"]
+[ext_resource type="AudioStream" uid="uid://dqi2wjrxxuhj" path="res://Sounds/powerup_get.wav" id="166_unxw8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q88dm"]
 resource_name = "idle"
@@ -699,7 +702,22 @@ shape = SubResource("RectangleShape2D_25ck2")
 
 [node name="cargopants" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("163_8i26e")
-volume_db = -22.476
+volume_db = -14.98
 panning_strength = 3.0
+
+[node name="borales" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("164_05b6n")
+panning_strength = 0.0
+
+[node name="brr" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("165_1vbbx")
+volume_db = 6.37
+panning_strength = 3.0
+
+[node name="powerup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("166_unxw8")
+volume_db = -5.622
+pitch_scale = 1.41
+panning_strength = 0.0
 
 [connection signal="animation_finished" from="MainCar" to="." method="_on_main_car_animation_finished"]

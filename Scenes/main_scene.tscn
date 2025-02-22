@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cn4fsgay8bat0"]
+[gd_scene load_steps=20 format=3 uid="uid://cn4fsgay8bat0"]
 
 [ext_resource type="PackedScene" uid="uid://c6848nhfw7043" path="res://Scenes/Road_Entities.tscn" id="1_8tk2h"]
 [ext_resource type="Script" path="res://Scripts/main_scene.gd" id="1_lba7u"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bhmvlam3rjy85" path="res://Sounds/music for editing if ure good at it/melodyslow.mp3" id="14_hlef5"]
 [ext_resource type="AudioStream" uid="uid://bqyexx378xkqs" path="res://Sounds/music for editing if ure good at it/melodymid.mp3" id="15_4e43x"]
 [ext_resource type="AudioStream" uid="uid://bdwk6kie803q" path="res://Sounds/gameover (2).wav" id="16_rfdx5"]
+[ext_resource type="Script" path="res://Scripts/distance_2.gd" id="17_2yq1b"]
 
 [sub_resource type="Shader" id="Shader_w38rg"]
 code = "shader_type canvas_item;
@@ -51,10 +52,10 @@ color = Color(0.34336, 0.366947, 0.779108, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 152.0
-offset_top = 136.0
-offset_right = 208.0
-offset_bottom = 812.0
+offset_left = 1704.0
+offset_top = 82.0
+offset_right = 1760.0
+offset_bottom = 758.0
 max_value = 5000.0
 fill_mode = 3
 texture_under = ExtResource("4_6w7t6")
@@ -134,14 +135,7 @@ theme_override_fonts/font = ExtResource("12_facu8")
 theme_override_font_sizes/font_size = 54
 
 [node name="Timer" type="Timer" parent="CanvasLayer/TimerNode"]
-wait_time = 120.0
-
-[node name="Distance" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("8_hta84")
+wait_time = 180.0
 
 [node name="Drums" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_4imob")
@@ -168,6 +162,15 @@ theme_override_fonts/font = ExtResource("12_facu8")
 theme_override_font_sizes/font_size = 281
 text = "Game Over"
 
+[node name="EndlessScore" type="Label" parent="."]
+offset_left = 1652.0
+offset_top = 1030.0
+offset_right = 1843.0
+offset_bottom = 1072.0
+theme_override_fonts/font = ExtResource("12_facu8")
+theme_override_font_sizes/font_size = 41
+text = "0000000"
+
 [node name="gover2" type="Label" parent="."]
 offset_left = 566.0
 offset_top = 663.0
@@ -181,6 +184,42 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = ExtResource("12_facu8")
 theme_override_font_sizes/font_size = 54
 text = "press esc to go back to menu"
+
+[node name="Distance" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1624.0
+offset_top = 677.0
+offset_right = 1664.0
+offset_bottom = 717.0
+script = ExtResource("8_hta84")
+
+[node name="Distance2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("17_2yq1b")
+
+[node name="livesLeft" type="Label" parent="."]
+offset_left = 1653.0
+offset_top = 983.0
+offset_right = 1936.0
+offset_bottom = 1030.0
+theme_override_fonts/font = ExtResource("12_facu8")
+theme_override_font_sizes/font_size = 36
+text = "3 Lives left"
+
+[node name="DISCLAIMER" type="Label" parent="livesLeft"]
+layout_mode = 0
+offset_left = -1262.0
+offset_top = 7.0
+offset_right = 1374.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("12_facu8")
+theme_override_font_sizes/font_size = 31
+text = "You better screenshot this, I am NOT making a backend to save scores "
 
 [connection signal="timeout" from="CanvasLayer/TimerNode/Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="Drums" to="." method="_on_drums_finished"]

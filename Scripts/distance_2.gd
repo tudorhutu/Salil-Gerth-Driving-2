@@ -8,6 +8,8 @@ extends Control
 var current_progress: float = 0.0
 
 func _draw() -> void:
+	if Global.isEndless:
+		return
 	var screen_size = get_viewport_rect().size
 	var y = screen_size.y - bar_margin
 	var start_point = Vector2(bar_margin, y)

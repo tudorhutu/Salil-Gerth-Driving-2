@@ -1,14 +1,17 @@
 extends Node2D
 
-@export var left_spawn_interval: float = 1.0
-@export var right_spawn_interval: float = 2.0
+@export var left_spawn_interval: float = 3.0
+@export var right_spawn_interval: float = 3.0
 
 # Minimum intervals when distance is high (i.e. spawn rate is faster)
-@export var min_left_spawn_interval: float = 0.5
-@export var min_right_spawn_interval: float = 1.0
+@export var min_left_spawn_interval: float = 2.5
+@export var min_right_spawn_interval: float = 2
 
 # The distance at which the spawn intervals reach their minimum values.
-@export var distance_for_max_spawn: float = 1000.0
+@export var distance_for_max_spawn: float = 1500.0
+
+# Chance to spawn a row of enemies on the right instead of a single one (0.0 to 1.0)
+@export var row_spawn_chance: float = 0.3
 
 var time_since_spawn_left: float = 0.0
 var time_since_spawn_right: float = 0.0
@@ -21,7 +24,7 @@ var spawnAllowed: bool = true
 @export var enemy_light_scene: PackedScene = preload("res://Scenes/EnemyLight.tscn")
 @export var enemy_light_down_scene: PackedScene = preload("res://Scenes/EnemyLightDown.tscn")
 
-func _ready() -> void:
+func _ready() -> void:	
 	rng.randomize()
 	var dir = DirAccess.open("res://Textures/Obstacles/DynamicObstacles/")
 	if dir:
@@ -56,8 +59,9 @@ func _process(delta: float) -> void:
 			spawn_obstacle("right")
 			time_since_spawn_right = 0.0
 
-func spawn_obstacle(direction: String) -> void:
-	var obstacle_sprite = Sprite2D.new()
+# This helper creates an enemy obstacle and returns it.
+func create_enemy(direction: String) -> Sprite2D:
+	var enemy = Sprite2D.new()
 	var texture_path: String = ""
 	if obstacle_textures.size() > 0:
 		if direction == "left":
@@ -75,26 +79,24 @@ func spawn_obstacle(direction: String) -> void:
 	else:
 		texture_path = default_obstacle_texture.resource_path
 	
-	obstacle_sprite.texture = load(texture_path)
-	obstacle_sprite.centered = true
-	obstacle_sprite.set_script(load("res://Scripts/DynamicObstacle.gd"))
+	enemy.texture = load(texture_path)
+	enemy.centered = true
+	enemy.set_script(load("res://Scripts/DynamicObstacle.gd"))
 	
-	var viewport_size = get_viewport_rect().size
-	var spawn_y: float = 0.0
+	# Set movement direction and attach the appropriate light.
 	if direction == "left":
-		obstacle_sprite.movement_direction = Vector2.DOWN
-		spawn_y = -700
+		enemy.movement_direction = Vector2.DOWN
 	else:
-		obstacle_sprite.movement_direction = Vector2.UP
-		spawn_y = viewport_size.y + 700
+		enemy.movement_direction = Vector2.UP
 	
 	var light
-	if obstacle_sprite.movement_direction == Vector2.DOWN:
+	if enemy.movement_direction == Vector2.DOWN:
 		light = enemy_light_down_scene.instantiate()
 	else:
 		light = enemy_light_scene.instantiate()
-	obstacle_sprite.add_child(light)
+	enemy.add_child(light)
 	
+	# Create collision area.
 	var area = Area2D.new()
 	area.monitoring = true
 	area.monitorable = true
@@ -102,19 +104,53 @@ func spawn_obstacle(direction: String) -> void:
 	area.collision_mask = 16
 	var collision = CollisionShape2D.new()
 	var rect_shape = RectangleShape2D.new()
-	if obstacle_sprite.texture:
-		rect_shape.extents = obstacle_sprite.texture.get_size() * 0.5
+	if enemy.texture:
+		rect_shape.extents = enemy.texture.get_size() * 0.5
 	collision.shape = rect_shape
 	collision.position = Vector2.ZERO
 	area.add_child(collision)
-	area.connect("area_entered", Callable(obstacle_sprite, "_on_area_entered_obstacle"))
-	obstacle_sprite.add_child(area)
+	area.connect("area_entered", Callable(enemy, "_on_area_entered_obstacle"))
+	enemy.add_child(area)
 	
+	return enemy
+
+# Modified spawn_obstacle now checks if a row should spawn for right-side spawns.
+func spawn_obstacle(direction: String) -> void:
+	if direction == "right" and rng.randf() < row_spawn_chance:
+		spawn_row_of_enemies()
+		return
+	
+	var enemy = create_enemy(direction)
+	var viewport_size = get_viewport_rect().size
+	var spawn_y: float = 0.0
 	var x_pos: float = 0.0
+	
 	if direction == "left":
+		enemy.movement_direction = Vector2.DOWN
+		spawn_y = -700
 		x_pos = rng.randi_range(400, 900)
 	else:
+		enemy.movement_direction = Vector2.UP
+		spawn_y = viewport_size.y + 700
 		x_pos = rng.randi_range(950, 1600)
 	
-	obstacle_sprite.position = Vector2(x_pos, spawn_y)
-	add_child(obstacle_sprite)
+	enemy.position = Vector2(x_pos, spawn_y)
+	add_child(enemy)
+
+# New function to spawn a row of enemies on the right side.
+func spawn_row_of_enemies() -> void:
+	var row_count = rng.randi_range(2, 3)  # Number of enemies in the row.
+	var spacing = 100.0  # Horizontal spacing between enemies.
+	# Ensure the entire row fits within the desired x-range.
+	var min_x = 950
+	var max_x = 1600 - (row_count - 1) * spacing
+	var base_x = rng.randf_range(min_x, max_x)
+	
+	var viewport_size = get_viewport_rect().size
+	var spawn_y = viewport_size.y + 700
+	
+	for i in range(row_count):
+		var enemy = create_enemy("right")
+		enemy.position = Vector2(base_x + i * spacing, spawn_y)
+		enemy.movement_direction = Vector2.UP
+		add_child(enemy)

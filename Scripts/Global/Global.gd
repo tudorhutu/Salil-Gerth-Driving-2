@@ -6,3 +6,7 @@ var player_speed: float = 1.0
 var distance: float = 0
 var paused = false
 var borasc = false
+var playerposition = 0.0
+var quitted = false
+var isEndless = false
+var endlessLives = 0

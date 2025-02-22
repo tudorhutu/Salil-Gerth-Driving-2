@@ -69,6 +69,7 @@ func _ready() -> void:
 	SignalBus.connect("BORASC", Callable(self, "on_borasc"))
 
 func _process(delta: float) -> void:
+	Global.playerposition = position.x
 	if Global.paused:
 		return
 	if is_borasc:
@@ -78,8 +79,10 @@ func _process(delta: float) -> void:
 		$MainCar.play("idle")
 		return
 	if is_in_dirt:
+		$brr.play()
 		max_speed = 10
 	else:
+		$brr.stop()
 		max_speed = base_max_speed
 		
 	time_passed += delta
@@ -148,6 +151,7 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_obstacle_hit(area: Area2D) -> void:
 	# If the collided obstacle is flagged as a powerup, ignore hit effects.
 	if area.get_parent() and area.get_parent().has_meta("is_powerup") and area.get_parent().get_meta("is_powerup"):
+		$powerup.play()
 		return
 	if is_in_dirt:
 		return
@@ -184,6 +188,8 @@ func _on_dirt_area_exited(area: Area2D) -> void:
 	is_in_dirt = false
 
 func on_borasc() -> void:
+	if Global.isEndless:
+		Global.endlessLives -=1
 	is_borasc = true
 	collision_area.monitoring = false
 	speed = 0
@@ -192,6 +198,7 @@ func on_borasc() -> void:
 	Global.player_speed = 0
 	var viewport_size = get_viewport_rect().size
 	position.x = viewport_size.x - 50
+	$borales.play()
 	await get_tree().create_timer(2.0).timeout
 	position.x = viewport_size.x / 2
 	speed = (min_speed + max_speed) / 2

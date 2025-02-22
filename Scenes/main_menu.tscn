@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnnhg3vsqse1k"]
+[gd_scene load_steps=7 format=3 uid="uid://dnnhg3vsqse1k"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_u10sa"]
 [ext_resource type="Theme" uid="uid://bprtsqppvpblx" path="res://Textures/themes/forbuttons.tres" id="2_1ii1q"]
 [ext_resource type="Texture2D" uid="uid://b36jdo14i6pp" path="res://Textures/salil gerth driving 2 foreground.png" id="2_c5vih"]
+[ext_resource type="FontFile" uid="uid://bhuhi4yo5rvro" path="res://Fonts/yoster.ttf" id="4_2t6j1"]
+[ext_resource type="AudioStream" uid="uid://8sckr2vs4mjt" path="res://Textures/MENU/hover.wav" id="5_0b7d4"]
+[ext_resource type="AudioStream" uid="uid://7e44jqfklj5p" path="res://Textures/MENU/EXTREMELY LOUD INCORRECT BUZZER [TubeRipper.com].mp3" id="6_tqrll"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,10 +16,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u10sa")
 
+[node name="play2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 79.0
+offset_right = 1059.0
+offset_bottom = 165.0
+theme = ExtResource("2_1ii1q")
+text = "Endless"
+
 [node name="play" type="Button" parent="."]
 layout_mode = 2
-offset_left = 157.0
-offset_top = 972.0
+offset_left = 120.0
+offset_top = 917.0
 offset_right = 374.0
 offset_bottom = 1003.0
 theme = ExtResource("2_1ii1q")
@@ -24,8 +36,8 @@ text = "Play"
 
 [node name="kys" type="Button" parent="."]
 layout_mode = 2
-offset_left = 837.0
-offset_top = 983.0
+offset_left = 785.0
+offset_top = 936.0
 offset_right = 1054.0
 offset_bottom = 1014.0
 theme = ExtResource("2_1ii1q")
@@ -33,11 +45,13 @@ text = "How to Play"
 
 [node name="quit" type="Button" parent="."]
 layout_mode = 2
-offset_left = 1529.0
-offset_top = 980.0
-offset_right = 1746.0
+offset_left = 1485.0
+offset_top = 941.0
+offset_right = 1764.0
 offset_bottom = 1011.0
+focus_mode = 0
 theme = ExtResource("2_1ii1q")
+action_mode = 0
 text = "Quit or something like that"
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -49,6 +63,36 @@ offset_bottom = 640.0
 mouse_filter = 2
 texture = ExtResource("2_c5vih")
 
+[node name="NO" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 84.0
+offset_top = -59.0
+offset_right = 1793.0
+offset_bottom = 1218.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 85
+theme_override_fonts/font = ExtResource("4_2t6j1")
+theme_override_font_sizes/font_size = 1281
+text = "NO"
+
+[node name="hober" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0b7d4")
+volume_db = -19.764
+
+[node name="loudbUZZER" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tqrll")
+volume_db = -37.868
+
+[connection signal="mouse_entered" from="play2" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="play2" to="." method="_on_play_2_pressed"]
+[connection signal="focus_entered" from="play" to="." method="_on_play_focus_entered"]
+[connection signal="mouse_entered" from="play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
 [connection signal="button_down" from="kys" to="." method="_on_kys_button_down"]
-[connection signal="button_down" from="quit" to="." method="_on_quit_button_down"]
+[connection signal="mouse_entered" from="kys" to="." method="_on_kys_mouse_entered"]
+[connection signal="mouse_entered" from="quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
