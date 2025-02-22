@@ -16,7 +16,7 @@ func _ready() -> void:
 	$Distance.show()
 	$livesLeft.hide()
 	if Global.isEndless:
-		Global.endlessLives = -3
+		Global.endlessLives = 3
 		$livesLeft.show()
 		$EndlessScore.show()
 		$Distance.hide()
@@ -48,8 +48,8 @@ func _process(delta: float) -> void:
 		if Global.endlessLives == 0:
 			$livesLeft.text = 'Don \'t puke!'
 		if Global.endlessLives < 0:
-			$overr.play()
 			$gover.show()
+			$overr.play()
 			$gover2.show()
 			$Drums.stop()
 			$Slow.stop() 
