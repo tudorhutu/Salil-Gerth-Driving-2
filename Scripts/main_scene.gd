@@ -3,6 +3,7 @@ extends Node2D
 var paused: bool = false
 
 func _ready() -> void:
+	Global.storyDone = false
 	$livesLeft/DISCLAIMER.hide()
 	$gover.hide()
 	$gover2.hide()
@@ -16,7 +17,7 @@ func _ready() -> void:
 	$Distance.show()
 	$livesLeft.hide()
 	if Global.isEndless:
-		Global.endlessLives = 3
+		Global.endlessLives = -1
 		$livesLeft.show()
 		$EndlessScore.show()
 		$Distance.hide()

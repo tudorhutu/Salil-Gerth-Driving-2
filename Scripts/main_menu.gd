@@ -3,6 +3,15 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$play2.disabled = true
+	$salillmenu/deadwife.hide()
+	$salillmenu/TextureRect.show()
+	if Global.storyDone:
+		$salillmenu/deadwife.show()
+		$salillmenu/TextureRect.hide()
+		$salillmenu/Label.text = "Salil says:
+My wife is dead"
+		$play2.disabled = false
 	if Global.quitted:
 		$quit.disabled = true
 	$NO.hide()
@@ -14,7 +23,7 @@ func _process(delta: float) -> void:
 
 
 func _on_play_pressed() -> void:	
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Cutscenes/Intro.tscn")
 	Global.paused = false
 	Global.isEndless = false
 
@@ -49,3 +58,8 @@ func _on_quit_mouse_entered() -> void:
 func _on_play_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
 	Global.isEndless = true
+
+
+func _on_play_2_mouse_entered() -> void:
+	if Global.storyDone:
+		$hober.play()

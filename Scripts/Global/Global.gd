@@ -10,3 +10,4 @@ var playerposition = 0.0
 var quitted = false
 var isEndless = false
 var endlessLives = 0
+var storyDone = false

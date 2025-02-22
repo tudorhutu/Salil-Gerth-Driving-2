@@ -17,7 +17,7 @@ var colors = [
 var time_passed: float = 0.0
 var lights: Array = []
 
-func _ready() -> void:
+func _ready() -> void:	
 	$AnimationPlayer.play("intro")
 	randomize()
 
@@ -37,7 +37,6 @@ func flash_lights():
 	while true:
 		for light in lights:
 			if is_instance_valid(light):
-				# Assign a random color to each light
 				light.color = colors[randi() % colors.size()]
 		await get_tree().create_timer(flash_speed).timeout
 
@@ -49,3 +48,8 @@ func _process(delta: float) -> void:
 		if is_instance_valid(light):
 			var pulsate_intensity = min_intensity + (sin(time_passed + light.get_index()) * 0.5 + 0.5) * (max_intensity - min_intensity)
 			light.energy = pulsate_intensity
+
+
+func _on_timer_timeout() -> void:
+	print("hello?")
+	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnnhg3vsqse1k"]
+[gd_scene load_steps=9 format=3 uid="uid://dnnhg3vsqse1k"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_u10sa"]
 [ext_resource type="Theme" uid="uid://bprtsqppvpblx" path="res://Textures/themes/forbuttons.tres" id="2_1ii1q"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://bhuhi4yo5rvro" path="res://Fonts/yoster.ttf" id="4_2t6j1"]
 [ext_resource type="AudioStream" uid="uid://8sckr2vs4mjt" path="res://Textures/MENU/hover.wav" id="5_0b7d4"]
 [ext_resource type="AudioStream" uid="uid://7e44jqfklj5p" path="res://Textures/MENU/EXTREMELY LOUD INCORRECT BUZZER [TubeRipper.com].mp3" id="6_tqrll"]
+[ext_resource type="Texture2D" uid="uid://clpvv601x4f1y" path="res://Textures/MENU/hello.png" id="7_p17o5"]
+[ext_resource type="Texture2D" uid="uid://bsh75j3obi3la" path="res://Textures/MENU/dead-wife.png" id="8_6vofa"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,15 +17,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u10sa")
-
-[node name="play2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 805.0
-offset_top = 79.0
-offset_right = 1059.0
-offset_bottom = 165.0
-theme = ExtResource("2_1ii1q")
-text = "Endless"
 
 [node name="play" type="Button" parent="."]
 layout_mode = 2
@@ -87,8 +80,47 @@ volume_db = -19.764
 stream = ExtResource("6_tqrll")
 volume_db = -37.868
 
-[connection signal="mouse_entered" from="play2" to="." method="_on_play_mouse_entered"]
-[connection signal="pressed" from="play2" to="." method="_on_play_2_pressed"]
+[node name="salillmenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="salillmenu"]
+z_index = 280
+layout_mode = 0
+offset_left = 1214.0
+offset_top = 94.0
+offset_right = 1525.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_2t6j1")
+theme_override_font_sizes/font_size = 31
+text = "Salil says:
+Finish the story to unlock endless mode!"
+
+[node name="TextureRect" type="Sprite2D" parent="salillmenu"]
+z_index = 3115
+position = Vector2(1096, 204)
+scale = Vector2(0.330606, 0.330606)
+texture = ExtResource("7_p17o5")
+
+[node name="deadwife" type="Sprite2D" parent="salillmenu"]
+position = Vector2(1162, 253)
+scale = Vector2(0.440705, 0.440705)
+texture = ExtResource("8_6vofa")
+
+[node name="play2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 79.0
+offset_right = 1059.0
+offset_bottom = 165.0
+focus_mode = 0
+theme = ExtResource("2_1ii1q")
+text = "Endless"
+
 [connection signal="focus_entered" from="play" to="." method="_on_play_focus_entered"]
 [connection signal="mouse_entered" from="play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
@@ -96,3 +128,5 @@ volume_db = -37.868
 [connection signal="mouse_entered" from="kys" to="." method="_on_kys_mouse_entered"]
 [connection signal="mouse_entered" from="quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="play2" to="." method="_on_play_2_mouse_entered"]
+[connection signal="pressed" from="play2" to="." method="_on_play_2_pressed"]

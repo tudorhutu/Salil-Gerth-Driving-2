@@ -3,7 +3,7 @@ extends Control
 @export var bar_margin: int = 20
 @export var bar_height: float = 10.0
 @export var min_value: float = 0.0
-@export var max_value: float = 2000.0
+@export var max_value: float = 20.0
 
 var current_progress: float = 0.0
 
@@ -20,12 +20,12 @@ func _draw() -> void:
 	draw_line(start_point, filled_end_point, Color.GREEN, bar_height)
 
 func _process(delta: float) -> void:
-	if Global.paused or Global.borasc:
+	if Global.paused or Global.borasc or Global.isEndless:
 		return
 	current_progress = (Global.distance - min_value) / (max_value - min_value)
 	current_progress = clamp(current_progress, 0.0, 1.0)
-	# Check if the progress is full (i.e., 100%)
 	if current_progress >= 1.0:
+		Global.storyDone = true
 		get_tree().change_scene_to_file("res://Scenes/Cutscenes/Outro.tscn")
 	
 	queue_redraw()
