@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwtfwm8yjpuh6"]
+[gd_scene load_steps=26 format=3 uid="uid://dwtfwm8yjpuh6"]
 
 [ext_resource type="Script" path="res://Scripts/intro.gd" id="1_kdjh1"]
 [ext_resource type="Texture2D" uid="uid://c7rp4c5h010st" path="res://Textures/Parallax/background-1_0.png" id="2_wiy02"]
@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bpt7ddplcpl1m" path="res://Textures/Cutscenes/grass.png" id="4_t81wa"]
 [ext_resource type="Shader" path="res://Shaders/color_replace_keep_alpha.gdshader" id="6_qjfeb"]
 [ext_resource type="Texture2D" uid="uid://daycmitiy0q8y" path="res://Textures/Cutscenes/footprint.png" id="7_1cvth"]
+[ext_resource type="Texture2D" uid="uid://dd00vmdgy3e28" path="res://Textures/png-clipart-car-pixel-art-pixel-rectangle-symmetry-thumbnail.png" id="7_7xh8n"]
+[ext_resource type="AudioStream" uid="uid://qmkixe3juam1" path="res://Sounds/Cutscenes/car_ignition.wav" id="12_6c8lf"]
 [ext_resource type="Shader" path="res://Shaders/alpha_replace_color.gdshader" id="12_gdwuy"]
+[ext_resource type="AudioStream" uid="uid://bg2210iurokuo" path="res://Sounds/Cutscenes/car_engine.wav" id="13_yu44l"]
+[ext_resource type="AudioStream" uid="uid://c500672qbs7j5" path="res://Sounds/Cutscenes/night_ambient.mp3" id="14_r43kt"]
 [ext_resource type="Texture2D" uid="uid://d3g2jkf48xmgs" path="res://Textures/Cutscenes/salil.png" id="16_8aes7"]
 [ext_resource type="Texture2D" uid="uid://b2hvrgb5hm5oo" path="res://Textures/untitled.png" id="17_6b76d"]
 [ext_resource type="Texture2D" uid="uid://bx6o8swk4lyi0" path="res://Textures/istockphoto-1365709788-612x612.png" id="18_sn7ik"]
@@ -27,7 +31,7 @@ shader_parameter/replacement_color = Vector4(0.56, 0, 0, 1)
 shader_parameter/threshold = 1.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cyaf4"]
-polygon = PackedVector2Array(9.20862, -91.0222, 9.20862, 32.2371, -72.7482, 32.2371, -110.504, -29.3926, -65.3813, -97.6592)
+polygon = PackedVector2Array(9.20874, -46.4592, 9.20862, 32.2371, -162.071, 36.0295, -161.151, -31.2889, -160.23, -172.563)
 
 [sub_resource type="Gradient" id="Gradient_5e85g"]
 offsets = PackedFloat32Array(0)
@@ -161,6 +165,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [4.28792]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-630, 609)]
+}
 
 [sub_resource type="Animation" id="Animation_va8ci"]
 resource_name = "intro"
@@ -184,10 +200,10 @@ tracks/1/path = NodePath("HouseRoot/House/CanvasLayer/Salil2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-0.466667, 4.33333, 6.76667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(-0.466667, 4.33333, 6.06667, 6.76667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-722, 603), Vector2(-722, 603), Vector2(-593, 581)]
+"values": [Vector2(-722, 603), Vector2(-722, 603), Vector2(-630, 601), Vector2(-593, 581)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -208,10 +224,10 @@ tracks/3/path = NodePath("HouseRoot/House/CanvasLayer/Salil:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.13333, 5.73333, 8.33333, 21.6, 25.6667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(1.13333, 5.73333, 7.4, 8.33333, 21.6, 25.6667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-802, 597), Vector2(-802, 597), Vector2(-587, 641), Vector2(-587, 641), Vector2(-153, 466)]
+"values": [Vector2(-802, 597), Vector2(-802, 597), Vector2(-662, 613), Vector2(-587, 641), Vector2(-587, 641), Vector2(-153, 466)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -309,12 +325,64 @@ tracks/11/keys = {
 "update": 0,
 "values": [4.28792, 4.28792, 4.70508, 4.70508, 3.12639]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Camera2D:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(-0.233333, 21.5333, 25.6667, 32.0667, 34.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-630, 609), Vector2(-630, 609), Vector2(-148, 433), Vector2(-148, 433), Vector2(429, 430)]
+}
+tracks/13/type = "audio"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AudioStreamPlayer")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 3.78384,
+"stream": ExtResource("12_6c8lf")
+}, {
+"end_offset": 48.1596,
+"start_offset": 0.0,
+"stream": ExtResource("13_yu44l")
+}],
+"times": PackedFloat32Array(27.5667, 31.4667)
+}
+tracks/13/use_blend = true
+tracks/14/type = "audio"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Ambient")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"clips": [{
+"end_offset": 77.7741,
+"start_offset": 0.0,
+"stream": ExtResource("14_r43kt")
+}],
+"times": PackedFloat32Array(0.0999999)
+}
+tracks/14/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3op6"]
 _data = {
 "RESET": SubResource("Animation_aocfw"),
 "intro": SubResource("Animation_va8ci")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gaj70"]
+shader = ExtResource("6_qjfeb")
+shader_parameter/target_color = Vector4(0, 0, 0, 0)
+shader_parameter/replacement_color = Vector4(0.56, 0, 0, 1)
+shader_parameter/threshold = 1.0
 
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_kdjh1")
@@ -331,7 +399,6 @@ metadata/_edit_lock_ = true
 position = Vector2(984.25, 698.373)
 scale = Vector2(2.34464, 2.17424)
 texture = ExtResource("2_wiy02")
-metadata/_edit_lock_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="RoadRoot"]
 position = Vector2(534, 1271)
@@ -430,6 +497,21 @@ position = Vector2(2872, 321)
 texture = ExtResource("4_t81wa")
 metadata/_edit_lock_ = true
 
+[node name="Grass10" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2104, -63)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass11" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2488, -63)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
+[node name="Grass12" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2872, -63)
+texture = ExtResource("4_t81wa")
+metadata/_edit_lock_ = true
+
 [node name="Grass8" type="Sprite2D" parent="HouseRoot/Yard"]
 position = Vector2(2872, 704)
 texture = ExtResource("4_t81wa")
@@ -452,10 +534,11 @@ metadata/_edit_lock_ = true
 [node name="TextureRect2" type="ColorRect" parent="HouseRoot/Yard"]
 offset_left = 2220.0
 offset_top = 298.0
-offset_right = 2538.0
+offset_right = 2540.0
 offset_bottom = 349.0
 scale = Vector2(2.63965, 3.1039)
 color = Color(0.662626, 0.676524, 0.33986, 1)
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="HouseRoot/Yard"]
 position = Vector2(2810, 262)
@@ -513,12 +596,60 @@ rotation = -4.83455
 scale = Vector2(0.017, -0.017)
 texture = ExtResource("7_1cvth")
 
+[node name="Sprite2D" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2803, 335)
+rotation = 1.69294
+scale = Vector2(0.181755, 0.181755)
+texture = ExtResource("7_7xh8n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2537, 421)
+rotation = 4.71582
+scale = Vector2(0.181755, 0.181755)
+texture = ExtResource("7_7xh8n")
+
+[node name="Sprite2D4" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2714, 427)
+rotation = 4.49949
+scale = Vector2(0.181755, 0.181755)
+texture = ExtResource("7_7xh8n")
+
+[node name="Sprite2D3" type="Sprite2D" parent="HouseRoot/Yard"]
+position = Vector2(2580, 345)
+rotation = 7.68265
+scale = Vector2(0.181755, 0.181755)
+texture = ExtResource("7_7xh8n")
+
 [node name="House" type="Node2D" parent="HouseRoot"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HouseRoot/House"]
+layer = 0
+follow_viewport_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="HouseRoot/House/CanvasLayer"]
 color = Color(0, 0, 0, 1)
+
+[node name="PointLight2D9" type="PointLight2D" parent="HouseRoot/House/CanvasLayer"]
+position = Vector2(-593, 608)
+scale = Vector2(1.08594, 1.05469)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 4.88
+range_layer_min = -512
+range_layer_max = 1
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="partylight3" type="PointLight2D" parent="HouseRoot/House/CanvasLayer"]
+position = Vector2(-731, 602)
+rotation = 0.00225058
+scale = Vector2(1.27167, 0.714573)
+color = Color(0.83, 0, 0.484166, 1)
+energy = 4.88
+range_layer_min = -512
+range_layer_max = 1
+shadow_enabled = true
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
 
 [node name="Door" type="ColorRect" parent="HouseRoot/House/CanvasLayer"]
 z_index = 1
@@ -534,6 +665,13 @@ position = Vector2(34, -11)
 rotation = 1.5708
 scale = Vector2(1.08594, 1.05469)
 occluder = SubResource("OccluderPolygon2D_cyaf4")
+
+[node name="Polygon2D" type="Polygon2D" parent="HouseRoot/House/CanvasLayer/Door"]
+position = Vector2(34, -11)
+rotation = 1.5708
+scale = Vector2(1.08594, 1.05469)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(10.1296, -62.5777, -238.503, -218.074, -253.237, 41.7184, 10.1296, 36.0295)
 
 [node name="Floor" type="TextureRect" parent="HouseRoot/House/CanvasLayer"]
 offset_left = -1299.0
@@ -563,16 +701,28 @@ metadata/_edit_lock_ = true
 
 [node name="ColorRect3" type="ColorRect" parent="HouseRoot/House/CanvasLayer"]
 offset_left = -1296.0
-offset_top = 882.0
-offset_right = -1066.0
-offset_bottom = 1528.0
+offset_top = 990.0
+offset_right = -958.0
+offset_bottom = 1636.0
 rotation = -1.5708
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="PointLight2D9" type="PointLight2D" parent="HouseRoot/House/CanvasLayer"]
-position = Vector2(-620, 603)
-scale = Vector2(1.08594, 1.05469)
+[node name="partylight" type="PointLight2D" parent="HouseRoot/House/CanvasLayer"]
+position = Vector2(-648.65, 336.793)
+rotation = -0.414244
+scale = Vector2(1.05749, 0.809506)
+color = Color(0.61, 0.41785, 0.183, 0.345098)
+energy = 4.88
+range_layer_min = -512
+range_layer_max = 1
+texture = ExtResource("3_1xkhv")
+metadata/_edit_lock_ = true
+
+[node name="partylight2" type="PointLight2D" parent="HouseRoot/House/CanvasLayer"]
+position = Vector2(-639.068, 409.07)
+rotation = 0.130298
+scale = Vector2(1.14194, 0.758408)
 color = Color(0.61, 0.41785, 0.183, 0.345098)
 energy = 4.88
 range_layer_min = -512
@@ -586,6 +736,7 @@ position = Vector2(-722, 603)
 rotation = -6.29707
 scale = Vector2(0.0480061, 0.0474032)
 texture = ExtResource("16_8aes7")
+metadata/_edit_lock_ = true
 
 [node name="Salil" type="Sprite2D" parent="HouseRoot/House/CanvasLayer"]
 material = SubResource("ShaderMaterial_7515q")
@@ -593,6 +744,7 @@ position = Vector2(-802, 597)
 rotation = -6.27369
 scale = Vector2(0.0480061, 0.0474032)
 texture = ExtResource("16_8aes7")
+metadata/_edit_lock_ = true
 
 [node name="Car" type="Sprite2D" parent="."]
 position = Vector2(-162, 406)
@@ -627,12 +779,13 @@ layer = 2
 follow_viewport_enabled = true
 
 [node name="Dialogue1" type="Node2D" parent="TopMostLayer"]
+position = Vector2(-168, -71)
 
 [node name="ColorRect" type="ColorRect" parent="TopMostLayer/Dialogue1"]
-offset_left = -871.0
-offset_top = 398.0
-offset_right = -601.0
-offset_bottom = 594.0
+offset_left = -1039.0
+offset_top = 279.0
+offset_right = -616.0
+offset_bottom = 558.0
 scale = Vector2(2.92941, 2.86615)
 color = Color(0, 0, 0, 1)
 
@@ -641,27 +794,31 @@ offset_left = -579.0
 offset_top = 674.0
 offset_right = -378.0
 offset_bottom = 697.0
+theme_override_font_sizes/font_size = 20
 text = "You shouldn't drive drunk"
 
 [node name="Dialogue2" type="Node2D" parent="TopMostLayer"]
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="TopMostLayer/Dialogue2"]
-offset_left = -871.0
-offset_top = 398.0
-offset_right = -601.0
-offset_bottom = 594.0
+offset_left = -1277.0
+offset_top = 145.0
+offset_right = -840.0
+offset_bottom = 463.0
 scale = Vector2(2.92941, 2.86615)
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="TopMostLayer/Dialogue2"]
-offset_left = -579.0
-offset_top = 674.0
-offset_right = -378.0
-offset_bottom = 697.0
+offset_left = -740.0
+offset_top = 595.0
+offset_right = -539.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 20
 text = "Eh, what could go wrong?"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -669,6 +826,23 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visibility_layer = 3
-position = Vector2(-529, 541)
-scale = Vector2(4.45556, 10.3658)
+light_mask = 7
+visibility_layer = 7
+z_index = 2
+position = Vector2(-630, 609)
+zoom = Vector2(1.47, 1.47)
+metadata/_edit_lock_ = true
+
+[node name="footprint2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gaj70")
+position = Vector2(-353, 383)
+rotation = -4.11856
+scale = Vector2(0.0195896, -0.017)
+texture = ExtResource("7_1cvth")
+
+[node name="footprint3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gaj70")
+position = Vector2(-320, 367)
+rotation = -2.07821
+scale = Vector2(0.02, 0.017)
+texture = ExtResource("7_1cvth")
